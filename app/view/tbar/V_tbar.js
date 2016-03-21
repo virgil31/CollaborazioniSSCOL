@@ -32,18 +32,16 @@ Ext.define('CL.view.tbar.V_tbar', {
 		                }
 		            },
 		            {
-		                xtype: 'button',
-		                width: 325,
-		                height: 53,
+		                xtype: 'label',
+                        text: 'Soprintendenza Speciale per il Colosseo, il MNR e l\'Area Archeologica di Roma',
+		                //width: 325,
+		                //height: 53,
 		                margin: '0 0 0 10',
-		                style: "background-image: url('resources/images/logos/sigla.png') !important; " +
-		                    "background-size: 100% 100%;" +
-		                    "border-color: transparent;" +
-		                    "background-color: transparent;" +
-		                    "background-repeat: no-repeat;",
-		                handler: function () {
-		                    window.open("http://i109.photobucket.com/albums/n51/Izariel/ChromaticEmperorDragon.jpg",'_blank');
-		                }
+                        style:{
+                            color: 'white',
+                            fontSize: '17px',
+                            fontWeight: 'bold'
+                        }
 		            },
 		            '->',
                     {
