@@ -19,12 +19,6 @@ Ext.define('CL.controller.C_home', {
     init: function () {
         this.control({
 
-            // LOAD USER
-            'home button[action=load_user]':{
-                click: this.loadUser
-            },
-
-
             // TEST WINDOW
             'home button[action=test_window]':{
                 click: this.testWindow
@@ -43,8 +37,12 @@ Ext.define('CL.controller.C_home', {
     //ROUTES
 
     showView: function(){
-        //Ext.ComponentQuery.query("window").forEach(function(win){win.destroy();});  //per eliminare le vecchie windows
+        if(Ext.ComponentQuery.query('home').length == 0)
+            Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'home'});
 
+        Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('home_id');
+
+        /*
         if(Ext.util.Cookies.get("ced_logged") !== null){
             if(Ext.ComponentQuery.query('home').length == 0)
                 Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'home'});
@@ -53,6 +51,7 @@ Ext.define('CL.controller.C_home', {
         }
         else
             this.redirectTo('login');
+        */
     },
 
     /////////////////////////////////////////////////
@@ -65,12 +64,6 @@ Ext.define('CL.controller.C_home', {
 
         this.redirectTo('login');
     },
-
-    //LOAD USER
-    loadUser: function(){
-        Ext.ComponentQuery.query('home grid')[0].getStore().load();
-    },
-
 
     // TEST WINDOW
     testWindow: function(btn){

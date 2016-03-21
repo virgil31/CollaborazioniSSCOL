@@ -8,22 +8,9 @@ Ext.application({
         'C_user',
         'C_login',
         'C_home',
-        'C_second',
 
         'C_bbar',
-        'C_tbar',
-
-        'C_sede',
-        'C_ufficio',
-        'C_tipo_ditta',
-        'C_fornitore',
-        'C_utente',
-        'C_tipo_hardware',
-        'C_marca_hardware',
-        'C_modello_hardware',
-        'C_seriale_modello',
-
-        'C_fattura'
+        'C_tbar'
     ],
 
     // vv ROUTING
@@ -69,7 +56,7 @@ Ext.application({
                 {
                     xtype: 'panel',
                     scrollable: true,
-                    bodyStyle: "background: url('resources/images/background.jpg');background-repeat: no-repeat;background-position: 0 0;background-size: cover;",//"background: #3892D4",//  686868    963232
+                    bodyStyle: "background: url('resources/images/background.jpg');background-repeat: no-repeat;background-position: 0 0;background-size: cover;",
                     tbar: Ext.widget('tbar'),
                     layout: {
                         type: 'hbox',

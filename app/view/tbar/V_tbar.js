@@ -36,7 +36,7 @@ Ext.define('CL.view.tbar.V_tbar', {
 		                width: 325,
 		                height: 53,
 		                margin: '0 0 0 10',
-		                style: "background-image: url('resources/images/logos/logo_ced2.png') !important; " +
+		                style: "background-image: url('resources/images/logos/sigla.png') !important; " +
 		                    "background-size: 100% 100%;" +
 		                    "border-color: transparent;" +
 		                    "background-color: transparent;" +
@@ -46,6 +46,23 @@ Ext.define('CL.view.tbar.V_tbar', {
 		                }
 		            },
 		            '->',
+                    {
+		            	xtype: 'form',
+	    		        bodyStyle: "background-color: transparent;",
+
+		            	items: [
+							{
+					        	xtype: 'button',
+					        	text: 'Pannello Amministrativo',
+					        	action: 'go_to_login',
+					        	iconCls: 'x-fa fa-star',
+					        	padding: 10,
+					        	margin: '0 2 0 0',
+					        	hidden: Ext.util.Cookies.get('ced_logged') != null,
+                                handler: function(){CL.app.getController("C_home").redirectTo("login")}
+					        }
+		            	]
+		            },
 		            {
 		            	xtype: 'form',
 	    		        bodyStyle: "background-color: transparent;",

@@ -23,13 +23,7 @@ Ext.define('CL.view.login.V_login', {
     padding: 30,
 
     items: [
-        {
-            xtype: 'image',
-            src: 'resources/images/colonna.png',
-            alt: " ",
-            width: 300,
-            height: 498
-        },
+
         {
             xtype: 'form',
             title: 'Login',
@@ -75,13 +69,6 @@ Ext.define('CL.view.login.V_login', {
                     action: 'do_login'
                 }
             ]
-        },
-        {
-            xtype: 'image',
-            src: 'resources/images/colonna.png',
-            alt: " ",
-            width: 300,
-            height: 498
         }
     ]
 });
