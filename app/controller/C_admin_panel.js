@@ -12,7 +12,7 @@ Ext.define('CL.controller.C_admin_panel', {
         'M_generic'
     ],
     views: [
-        'admin_panel.V_admin_panel',
+        'admin_panel.V_admin_panel'
         //'admin_panel.V_create',
         //'admin_panel.V_edit'
     ],

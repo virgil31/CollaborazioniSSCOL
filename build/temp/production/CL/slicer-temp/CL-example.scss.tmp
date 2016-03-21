@@ -1,15 +1,14 @@
 $app-name:  dynamic( 'CL' );
 $image-search-path: 'C:/xampp/htdocs/projects/Extjs_6.0.0/CollaborazioniSSCOL/build/production/CL/resources';
 $theme-name:  dynamic( 'theme-crisp' );
+$include-cl-controller-c_admin_panel: dynamic(true);;
 $include-cl-controller-c_bbar: dynamic(true);;
 $include-cl-controller-c_home: dynamic(true);;
 $include-cl-controller-c_login: dynamic(true);;
 $include-cl-controller-c_not_found: dynamic(true);;
 $include-cl-controller-c_tbar: dynamic(true);;
-$include-cl-controller-c_user: dynamic(true);;
 $include-cl-model-m_generic: dynamic(true);;
-$include-cl-model-m_user: dynamic(true);;
-$include-cl-store-s_user: dynamic(true);;
+$include-cl-view-admin_panel-v_admin_panel: dynamic(true);;
 $include-cl-view-bbar-v_bbar: dynamic(true);;
 $include-cl-view-home-v_home: dynamic(true);;
 $include-cl-view-login-v_login: dynamic(true);;
