@@ -61,6 +61,7 @@ Ext.define('CL.controller.C_login', {
                         Ext.Msg.alert("Attenzione",risposta.message);
                     else{
                         Ext.util.Cookies.set("ced_logged", true);
+                        CL.app.getController("C_login").redirectTo('admin_panel');
                         location.reload();
                     }
                 }

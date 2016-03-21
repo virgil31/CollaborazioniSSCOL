@@ -34,8 +34,6 @@ Ext.define('CL.view.tbar.V_tbar', {
 		            {
 		                xtype: 'label',
                         text: 'Soprintendenza Speciale per il Colosseo, il MNR e l\'Area Archeologica di Roma',
-		                //width: 325,
-		                //height: 53,
 		                margin: '0 0 0 10',
                         style:{
                             color: 'white',
@@ -68,17 +66,13 @@ Ext.define('CL.view.tbar.V_tbar', {
 		            	items: [
 							{
 					        	xtype: 'button',
-					        	text: 'Esci',
+					        	tooltip: 'Esci',
 					        	action: 'do_logout',
 					        	iconCls: 'x-fa fa-remove',
-					        	width: 80,
-					        	padding: 10,
-					        	margin: '0 2 0 0',
 					        	hidden: Ext.util.Cookies.get('ced_logged') == null
 					        }
 		            	]
 		            }
-
 		        ]
 		    },
 		    '->'

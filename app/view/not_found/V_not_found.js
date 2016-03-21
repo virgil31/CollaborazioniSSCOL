@@ -4,7 +4,8 @@ Ext.define('CL.view.not_found.V_not_found', {
     itemId: 'not_found_id',
     alias: 'widget.not_found',
 
-    bodyStyle: 'backgroundColor: transparent',
+
+    bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
 
     layout: {
         type: 'vbox',
@@ -12,7 +13,10 @@ Ext.define('CL.view.not_found.V_not_found', {
         pack: 'center'
     },
 
-    items: [        
+    padding: 20,
+
+
+    items: [
         {
             xtype: 'image',
             src: 'resources/images/404_augusto.png',

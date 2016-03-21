@@ -27,7 +27,8 @@ Ext.define('CL.controller.C_tbar', {
 
     //DO LOGOUT
     doLogout: function () {
-        Ext.util.Cookies.clear("ced_logged");        
+        Ext.util.Cookies.clear("ced_logged");
+        CL.app.getController("C_tbar").redirectTo('home');
         location.reload();
     }
 

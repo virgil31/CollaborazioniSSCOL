@@ -9,7 +9,9 @@ Ext.application({
         'C_home',
 
         'C_bbar',
-        'C_tbar'
+        'C_tbar',
+
+        'C_admin_panel'
     ],
 
     // vv ROUTING
