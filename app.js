@@ -11,7 +11,10 @@ Ext.application({
         'C_bbar',
         'C_tbar',
 
-        'C_admin_panel'
+        'C_admin_panel',
+
+        'C_ruolo',
+        'C_requisito'
     ],
 
     // vv ROUTING

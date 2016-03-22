@@ -53,7 +53,19 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                         items: [
                             {
                                 xtype: 'button',
-                                text: 'lol'
+                                text: 'Gestione Ruoli',
+                                handler: function(){
+                                    Ext.widget("ruolo_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_ruolo").loadPage(1);
+                                    Ext.StoreManager.lookup("S_requisito").load({
+                                        params:{
+                                            flag_full: true
+                                        }
+                                    });
+                                }
                             }
                         ]
                     }

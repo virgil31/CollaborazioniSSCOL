@@ -61,12 +61,12 @@ Ext.define('CL.view.home.V_home', {
                                 width: '70%'
                             },
                             {
-                                html: '<a href="#signup" style="color: #08c; font-size: 24px; font-weight: bold;">Procedura di registrazione - Individuale</a>',
+                                html: '<a href="#signup" style="color: #08c; font-size: 22px; font-weight: bold;">Procedura di registrazione - Individuale</a>',
                                 bodyStyle: 'background: transparent;',
                                 margin: '20 0 0 0'
                             },
                             {
-                                html: '<a href="#signup_firm" style="color: #08c; font-size: 24px; font-weight: bold;">Procedura di registrazione - Studi e Associazioni</a>',
+                                html: '<a href="#signup_firm" style="color: #08c; font-size: 22px; font-weight: bold;">Procedura di registrazione - Studi e Associazioni</a>',
                                 bodyStyle: 'background: transparent;',
                                 margin: '20 0 10 0'
                             }
