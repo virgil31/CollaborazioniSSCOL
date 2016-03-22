@@ -3,6 +3,10 @@ Ext.application({
 
     name: 'CL',
 
+    requires: [
+        'CL.view.utils.SRCComponent'
+    ],
+
     controllers: [
         'C_not_found',
         'C_login',
@@ -14,7 +18,9 @@ Ext.application({
         'C_admin_panel',
 
         'C_ruolo',
-        'C_requisito'
+        'C_requisito',
+
+        'C_signup'
     ],
 
     // vv ROUTING
