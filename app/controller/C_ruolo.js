@@ -60,8 +60,6 @@ Ext.define('CL.controller.C_ruolo', {
             animateTarget: animateTargetEl
         });
 
-        console.log(record.data);
-
         win.down("form").loadRecord(record);
     },
 

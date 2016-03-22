@@ -11,7 +11,7 @@ $data = json_decode($_POST['data'],true);
 
 //AGGIORNO RUOLO
 $s = $pdo->prepare("
-	UPDATE ruolo
+	UPDATE requisito
 	SET nome = :nome
 	WHERE id = :id
 ");
@@ -22,31 +22,6 @@ $params = array(
 );
 
 $success = $s->execute($params);
-
-//AGGIORNO RUOLO x REQUISITO
-//prima elimino i precedenti requisiti
-$s = $pdo->prepare("
-	DELETE FROM ruolo_requisito
-	WHERE ruolo_id = :id
-");
-$params = array(
-	'id' => $data["id"]
-);
-$success = $s->execute($params);
-
-//poi inserisco i nuovi
-foreach ($data['requisito_ids'] as $requisito_id) {
-	$s = $pdo->prepare("
-		INSERT INTO ruolo_requisito(ruolo_id,requisito_id)
-		VALUES(:ruolo_id,:requisito_id)
-	");
-	$params = array(
-		'ruolo_id' => $data["id"],
-		'requisito_id' => $requisito_id
-	);
-	$success = $s->execute($params);
-}
-
 
 
 if ($success) {

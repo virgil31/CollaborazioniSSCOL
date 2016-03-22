@@ -28,10 +28,11 @@ $statement = $pdo->prepare("
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
-/*foreach ($result as $row) {
-	$row->requisito_ids = str_replace('{','[',$row->requisito_ids);
-	$row->requisito_ids = str_replace('}',']',$row->requisito_ids);
-}*/
+foreach ($result as $row) {
+	$row->requisito_ids = getIntArrayFromPGArray($row->requisito_ids);
+	//$row->requisito_ids = str_replace('{','',$row->requisito_ids);
+	//$row->requisito_ids = str_replace('}','',$row->requisito_ids);
+}
 
 
 if(count($result) != 0)
@@ -41,3 +42,11 @@ echo json_encode(array(
 	"result" => $result,
 	"total" => $total
 ));
+
+/////////////////////////////////////////////////////////////////
+
+function getIntArrayFromPGArray($pg_array){
+	$pg_array = str_replace('{','',$pg_array);
+	$pg_array = str_replace('}','',$pg_array);
+	return array_map('intval',explode(",",$pg_array));
+}

@@ -14,9 +14,9 @@ Ext.define('CL.controller.C_requisito', {
     ],
 
     views: [
-        //'requisito.V_list',
-        //'requisito.V_create',
-        //'requisito.V_edit'
+        'requisito.V_list',
+        'requisito.V_create',
+        'requisito.V_edit'
     ],
 
     /////////////////////////////////////////////////

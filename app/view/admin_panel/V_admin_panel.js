@@ -29,7 +29,7 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                             '->',
                             {
                                 xtype: 'label',
-                                text: 'Pannello Amministrativo di Gestione',
+                                text: 'Pannello Amministrativo Collaboratori',
                                 style:{
                                     color: '#9C1413',
                                     fontSize: '22px',
@@ -53,7 +53,20 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                         items: [
                             {
                                 xtype: 'button',
+                                text: 'Gestione Requisiti',
+                                margin: '0 0 10 0',
+                                handler: function(){
+                                    Ext.widget("requisito_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_requisito").loadPage(1);
+                                }
+                            },
+                            {
+                                xtype: 'button',
                                 text: 'Gestione Ruoli',
+                                margin: '10 0 10 0',
                                 handler: function(){
                                     Ext.widget("ruolo_list",{
                                         animateTarget: this.el
@@ -65,6 +78,20 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                             flag_full: true
                                         }
                                     });
+                                }
+                            },
+                            {
+                                xtype: 'button',
+                                text: 'Gestione Servizi',
+                                margin: '10 0 0 0',
+                                handler: function(){
+                                    /*
+                                    Ext.widget("requisito_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_requisito").loadPage(1);
+                                    */
                                 }
                             }
                         ]

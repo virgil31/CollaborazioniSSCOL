@@ -14,10 +14,10 @@ Ext.define('CL.store.S_requisito',{
     proxy:{
         type:'ajax',
         api: {
-            read: 'data/requisito/list.php'
-            //create: 'data/requisito/create.php',
-            //destroy: 'data/requisito/destroy.php',
-            //update: 'data/requisito/edit.php'
+            read: 'data/requisito/list.php',
+            create: 'data/requisito/create.php',
+            destroy: 'data/requisito/destroy.php',
+            update: 'data/requisito/edit.php'
         },
 
         reader:{
