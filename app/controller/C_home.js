@@ -58,68 +58,7 @@ Ext.define('CL.controller.C_home', {
         localStorage.removeItem('TutorialLoggedIn');
 
         this.redirectTo('login');
-    },
-
-    // TEST WINDOW
-    testWindow: function(btn){
-        Ext.create('Ext.window.Window',{
-            title: 'Test Window',
-
-            autoShow: true,
-            constrain: true,
-
-            bodyPadding: 10,
-
-            animateTarget: btn,
-
-            modal: true,
-
-            layout: 'fit',
-
-            width: 300,
-            height: 200,
-
-            maximizable: true,
-
-            items: [
-                {
-                    xtype: 'form',
-                    items: [
-                        {
-                            xtype: 'textfield',
-                            name: 'username',
-                            fieldLabel: 'Username',
-                            width: '100%',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'password',
-                            fieldLabel: 'Password',
-                            width: '100%',
-                            inputType: 'password',
-                            allowBlank: false
-                        }
-                    ],
-                    buttons: [
-                        {
-                            text: 'Login',
-                            formBind: true,
-                            action: 'do_login'
-                        }
-                    ]
-                }
-            ]
-        });
-    },
-
-
-    //GO TO OTHER VIEW
-    goToSecondView: function(){
-        var aaa = Math.floor((Math.random() * 100) + 1);
-        var bbb = Math.floor((Math.random() * 100) + 1);
-        this.redirectTo('second/'+aaa+"/"+bbb);
-    }
+    }    
 
 
 });

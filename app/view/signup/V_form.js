@@ -34,14 +34,19 @@ Ext.define('CL.view.signup.V_form', {
                                 text: 'Avanti >',
                                 padding: 20,
                                 style: 'background-color:green; text-color: white; border-color: white;',
+
+                                //quando ho finito, salvo i servizi selezionati nel cookie "servizi_selezionati"
                                 handler: function(){
                                     var servizi_selezionati = this.up('signup_form').down('grid').getSelection();
                                     if(servizi_selezionati.length < 1 || servizi_selezionati.length > 3)
                                         Ext.Msg.alert("Attenzione!","Per proseguire bisogna selezionare da 1 a 3 servizi.");
                                     else{
+                                        var servizi_selezionati_lite = [];
                                         servizi_selezionati.forEach(function(servizio){
-                                            alert("Selezionato servizio: "+servizio.get("id")+" (anni esperienza: "+servizio.get("anni_esperienza")+")");
+                                            servizi_selezionati_lite.push(servizio.data);
                                         });
+                                        Ext.util.Cookies.set("servizi_selezionati",Ext.JSON.encode(servizi_selezionati_lite));
+                                        CL.app.getController("C_signup").redirectTo("signup_profile");
                                     }
                                 }
                             }
