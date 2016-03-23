@@ -14,12 +14,12 @@ Ext.define('CL.controller.C_servizio', {
     ],
 
     views: [
-        //'servizio.V_list',
-        //'servizio.V_create',
-        //'servizio.V_edit'
-    ]
+        'servizio.V_list',
+        'servizio.V_create',
+        'servizio.V_edit'
+    ],
 
-    /*
+
 
     /////////////////////////////////////////////////
     init: function () {
@@ -72,7 +72,7 @@ Ext.define('CL.controller.C_servizio', {
             record = form.getRecord(),
             values = form.getValues();
 
-        Ext.Msg.confirm('Attenzione!', "Modificare l'servizio?",function(btn){
+        Ext.Msg.confirm('Attenzione!', "Modificare il servizio?",function(btn){
             if (btn === 'yes'){
                 record.set(values);
                 window.close();
@@ -126,6 +126,6 @@ Ext.define('CL.controller.C_servizio', {
             this.redirectTo('login');
     }
 
-    */
+
 
 });

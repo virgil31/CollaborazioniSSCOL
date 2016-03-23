@@ -85,13 +85,12 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                 text: 'Gestione Servizi',
                                 margin: '10 0 0 0',
                                 handler: function(){
-                                    /*
-                                    Ext.widget("requisito_list",{
+
+                                    Ext.widget("servizio_list",{
                                         animateTarget: this.el
                                     });
 
-                                    Ext.StoreManager.lookup("S_requisito").loadPage(1);
-                                    */
+                                    Ext.StoreManager.lookup("S_servizio").load();
                                 }
                             }
                         ]

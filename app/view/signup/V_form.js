@@ -160,12 +160,11 @@ Ext.define('CL.view.signup.V_form', {
                         columns: [
                             {
                                 text: 'Servizio',
-                                dataIndex: 'nome_per_grid',
+                                dataIndex: 'nome',
                                 flex: 10,
                                 renderer: function(value,metaData){
                                     metaData.style="color: #9C1414; font-weight: bold";
                                     return value;
-                                    //return value.replace(/(.{115})/g,"$1<br>")
                                 }
                             },
                             {

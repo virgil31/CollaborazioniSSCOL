@@ -2,11 +2,9 @@ Ext.define('CL.store.S_servizio',{
     extend: 'Ext.data.Store',
 
     autoLoad: true,
-    //autoSync: true,
+    autoSync: true,
 
     model: 'CL.model.M_servizio',
-
-    pageSize: 50,
 
     remoteSort: true,
     sorters: { property: 'posizione', direction : 'ASC' }, //lo ordiniamo per id
@@ -14,10 +12,10 @@ Ext.define('CL.store.S_servizio',{
     proxy:{
         type:'ajax',
         api: {
-            read: 'data/servizio/list.php'
-            //create: 'data/servizio/create.php',
-            //destroy: 'data/servizio/destroy.php',
-            //update: 'data/servizio/edit.php'
+            read: 'data/servizio/list.php',
+            create: 'data/servizio/create.php',
+            destroy: 'data/servizio/destroy.php',
+            update: 'data/servizio/edit.php'
         },
 
         reader:{

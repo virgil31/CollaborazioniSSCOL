@@ -20,14 +20,14 @@ $total = 0;
 $statement = $pdo->prepare("
 	SELECT A.id, A.nome, A.posizione, A.requisiti,COUNT(*) OVER() as total
 	FROM servizio A
-	ORDER BY $pro $dir LIMIT $limit OFFSET $start
+	ORDER BY $pro $dir
 ");
 
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_OBJ);
 
 foreach ($result as $row) {
-	$row->nome_per_grid = wordwrap($row->nome, 120, "<br>");
+	$row->nome = wordwrap($row->nome, 120, "<br>");
 }
 
 if(count($result) != 0)

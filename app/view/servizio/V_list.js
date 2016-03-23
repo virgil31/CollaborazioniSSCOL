@@ -1,8 +1,8 @@
-Ext.define('CL.view.ruolo.V_list', {
+Ext.define('CL.view.servizio.V_list', {
     extend: 'Ext.window.Window',
-    xtype: 'ruolo_list',
-    itemId: 'ruolo_list_id',
-    alias: 'widget.ruolo_list',
+    xtype: 'servizio_list',
+    itemId: 'servizio_list_id',
+    alias: 'widget.servizio_list',
 
     bodyStyle: 'backgroundColor: transparent',  //per rendere il corpo invisibile
 
@@ -16,7 +16,7 @@ Ext.define('CL.view.ruolo.V_list', {
     modal: true,
     constrain: true,
 
-    width: 700,
+    width: 850,
     height: 500,
 
     title: 'Ruoli',
@@ -43,7 +43,7 @@ Ext.define('CL.view.ruolo.V_list', {
             {
                 xtype: 'grid',
                 border: true,
-                store: 'S_ruolo',
+                store: 'S_servizio',
                 height: '98%',
                 flex: 60,
                 autoscroll: true,
@@ -54,18 +54,23 @@ Ext.define('CL.view.ruolo.V_list', {
 
                 dockedItems: [{
                     xtype: 'pagingtoolbar',
-                    store: 'S_ruolo', // same store GridPanel is using
+                    store: 'S_servizio', // same store GridPanel is using
                     dock: 'bottom',
                     displayInfo: true
                 }],
 
                 listeners: {
                     itemdblclick: function( grid, record, item, index, e, eOpts ){
-                        CL.app.getController("C_ruolo").onEdit(item,record);
+                        CL.app.getController("C_servizio").onEdit(item,record);
                     }
                 },
 
                 columns: [
+                    {
+                        text: '#',
+                        dataIndex: 'posizione',
+                        flex: 0.2
+                    },
                     {
                         text: 'Nome',
                         dataIndex: 'nome',
@@ -80,7 +85,7 @@ Ext.define('CL.view.ruolo.V_list', {
                                 tooltip: 'Modifica',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    CL.app.getController("C_ruolo").onEdit(this.el,rec);
+                                    CL.app.getController("C_servizio").onEdit(this.el,rec);
                                 }
                             },
                             {
@@ -88,7 +93,7 @@ Ext.define('CL.view.ruolo.V_list', {
                                 tooltip: 'Elimina',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    CL.app.getController("C_ruolo").onDestroy(rec);
+                                    CL.app.getController("C_servizio").onDestroy(rec);
                                 }
                             }
                         ]
