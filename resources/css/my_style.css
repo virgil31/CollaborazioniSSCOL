@@ -15,3 +15,8 @@ max-width: calc(100% - 22px);
 .x-action-col-icon {
     margin-right: 10px;
 }
+
+
+.x-grid-td {
+    vertical-align: middle;
+}

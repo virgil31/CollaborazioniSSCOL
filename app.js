@@ -17,10 +17,11 @@ Ext.application({
 
         'C_admin_panel',
 
-        'C_ruolo',
-        'C_requisito',
+        'C_ruolo',      //
+        'C_requisito',  //
 
-        'C_signup'
+        'C_signup',
+        'C_servizio'
     ],
 
     // vv ROUTING
