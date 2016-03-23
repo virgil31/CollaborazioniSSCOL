@@ -6,9 +6,8 @@ Ext.define('CL.view.signup.V_form', {
 
     bodyStyle: 'backgroundColor: transparent',  //per rendere il corpo invisibile
 
-    layout: {
+    layout:{
         type: 'vbox',
-        align: 'center',
         pack: 'center'
     },
 
@@ -20,11 +19,11 @@ Ext.define('CL.view.signup.V_form', {
                 xtype: 'panel',
                 bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
                 width: '100%',
-                layout: {
+                /*layout: {
                     type: 'vbox',
                     align: 'left',
                     pack: 'center'
-                },
+                },*/
                 bbar: [
                     '->',
                     {
@@ -74,7 +73,7 @@ Ext.define('CL.view.signup.V_form', {
                     {
                         xtype: 'grid',
                         scrollable: "vertical",
-                        height: 550,
+                        height: 560,
                         store: 'S_servizio',
                         width: '100%',
                         viewConfig:{
@@ -93,7 +92,7 @@ Ext.define('CL.view.signup.V_form', {
                             listeners: {
                                 deselect: function( me, record, index, eOpts ){
                                     record.set({
-                                        anni_esperienza: ""
+                                        anni_esperienza: null
                                     });
                                 },
                                 beforeselect: function( me, record, index, eOpts ){
@@ -110,8 +109,14 @@ Ext.define('CL.view.signup.V_form', {
                                         autoShow: true,
                                         constrain: true,
                                         resizable: false,
-                                        closable: false,
+                                        //closable: false,
                                         width: 200,
+                                        listeners: {
+                                            close: function(){
+                                                if(record.get("anni_esperienza") == null)
+                                                    me.deselect(record);
+                                            }
+                                        },
                                         items: [
                                             {
                                                 xtype: 'form',
@@ -151,8 +156,6 @@ Ext.define('CL.view.signup.V_form', {
                                                 ]
                                             }
                                         ]
-
-
                                     });
                                 }
                             }
