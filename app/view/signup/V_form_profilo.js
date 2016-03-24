@@ -74,7 +74,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'nome',
-                                                fieldLabel: 'Nome',
+                                                fieldLabel: 'Nome *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -82,7 +83,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'cognome',
-                                                fieldLabel: 'Cognome',
+                                                fieldLabel: 'Cognome *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -90,7 +92,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'cittadinanza',
-                                                fieldLabel: 'Cittadinanza',
+                                                fieldLabel: 'Cittadinanza *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -109,7 +112,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'datefield',
                                                 name: 'data_nascita',
-                                                fieldLabel: 'Data di Nascita',
+                                                fieldLabel: 'Data di Nascita *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -117,7 +121,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'stato_nascita',
-                                                fieldLabel: 'Stato di Nascita',
+                                                fieldLabel: 'Stato di Nascita *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -125,7 +130,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'citta_nascita',
-                                                fieldLabel: 'Città di Nascita',
+                                                fieldLabel: 'Città di Nascita *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -154,7 +160,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'indirizzo',
-                                                fieldLabel: 'Indirizzo',
+                                                fieldLabel: 'Indirizzo *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -162,7 +169,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'cap',
-                                                fieldLabel: 'CAP',
+                                                fieldLabel: 'CAP *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 0.1
@@ -181,7 +189,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'stato_residenza',
-                                                fieldLabel: 'Stato di Residenza',
+                                                fieldLabel: 'Stato di Residenza *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -189,7 +198,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'citta_residenza',
-                                                fieldLabel: 'Città di Residenza',
+                                                fieldLabel: 'Città di Residenza *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -218,7 +228,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'email',
-                                                fieldLabel: 'E-mail',
+                                                fieldLabel: 'E-mail *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -227,13 +238,15 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 xtype: 'textfield',
                                                 name: 'pec',
                                                 fieldLabel: 'PEC',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 flex: 1
                                             },
                                             {
                                                 xtype: 'textfield',
                                                 name: 'telefono',
-                                                fieldLabel: 'Telefono',
+                                                fieldLabel: 'Telefono *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -262,7 +275,8 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             {
                                                 xtype: 'textfield',
                                                 name: 'codice_fiscale',
-                                                fieldLabel: 'Codice Fiscale',
+                                                fieldLabel: 'Codice Fiscale *',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
@@ -271,6 +285,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 xtype: 'textfield',
                                                 name: 'partita_iva',
                                                 fieldLabel: 'Partita IVA',
+                                                labelSeparator : '',
                                                 labelAlign: 'top',
                                                 flex: 1
                                             }

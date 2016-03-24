@@ -110,6 +110,7 @@ Ext.define('CL.view.signup.V_form', {
                                     //Altrimenti chiedo gli anni di esperienza
                                     Ext.create("Ext.window.Window",{
                                         title: 'Informazioni Richieste',
+                                        name: 'anni_esperienza',
                                         modal: true,
                                         autoShow: true,
                                         constrain: true,
