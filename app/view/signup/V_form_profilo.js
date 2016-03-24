@@ -119,7 +119,13 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 flex: 1
                                             },
                                             {
-                                                xtype: 'textfield',
+                                                xtype: 'combobox',
+                                                store: 'S_nazioni',
+                                                displayField: 'name',
+                                                valueField: 'name',
+                                                queryMode: 'local',
+                                                anyMatch: true,
+                                                forceSelection: true,
                                                 name: 'stato_nascita',
                                                 fieldLabel: 'Stato di Nascita *',
                                                 labelSeparator : '',
@@ -187,7 +193,13 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         },
                                         items:[
                                             {
-                                                xtype: 'textfield',
+                                                xtype: 'combobox',
+                                                store: 'S_nazioni',
+                                                displayField: 'name',
+                                                valueField: 'name',
+                                                queryMode: 'local',
+                                                anyMatch: true,
+                                                forceSelection: true,
                                                 name: 'stato_residenza',
                                                 fieldLabel: 'Stato di Residenza *',
                                                 labelSeparator : '',
@@ -293,19 +305,43 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                     }
                                 ]
                             },
+                            ///////////////////////////////////////////////////////////////////////////////////////////
                             {
-                                xtype :'button',
-                                text: 'Avanti >',
-                                margin: '30 0 0 0',
-                                padding: 20,
-                                style: 'background-color:green; text-color: white; border-color: white;',
+                                xtype:'panel',
+                                type: 'hbox',
+                                bodyStyle:'background: #FFF4E0',
+                                items: [
+                                    {
+                                        xtype :'button',
+                                        text: '< Indietro',
+                                        margin: '30 0 0 0',
+                                        padding: 20,
+                                        style: 'background-color:#FF2626; text-color: white; border-color: white;',
 
-                                //quando ho finito, salvo i servizi selezionati nel cookie "signup_profilo"
-                                handler: function(){
-                                    var profilo_values = this.up("form").getValues();
+                                        //quando voglio tornare indietro, salvo i servizi selezionati nel cookie "signup_profilo"
+                                        handler: function(){
+                                            var profilo_values = this.up("form").getValues();
 
-                                    Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
-                                }
+                                            Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+
+                                            CL.app.getController("C_signup").redirectTo("signup");
+                                        }
+                                    },
+                                    {
+                                        xtype :'button',
+                                        text: 'Avanti >',
+                                        margin: '30 0 0 0',
+                                        padding: 20,
+                                        style: 'background-color:green; text-color: white; border-color: white;',
+
+                                        //quando ho finito, salvo i servizi selezionati nel cookie "signup_profilo"
+                                        handler: function(){
+                                            var profilo_values = this.up("form").getValues();
+
+                                            Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     }

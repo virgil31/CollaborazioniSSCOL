@@ -7,6 +7,10 @@ Ext.application({
         'CL.view.utils.SRCComponent'
     ],
 
+    stores:[
+        'S_nazioni'
+    ],
+
     controllers: [
         'C_not_found',
         'C_login',

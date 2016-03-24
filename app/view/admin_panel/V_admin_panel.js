@@ -51,7 +51,7 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                             pack: 'center'
                         },
                         items: [
-                            {
+                            /*{
                                 xtype: 'button',
                                 text: 'Gestione Requisiti',
                                 margin: '0 0 10 0',
@@ -79,7 +79,7 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                         }
                                     });
                                 }
-                            },
+                            },*/
                             {
                                 xtype: 'button',
                                 text: 'Gestione Servizi',
