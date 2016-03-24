@@ -92,6 +92,19 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
 
                                     Ext.StoreManager.lookup("S_servizio").load();
                                 }
+                            },
+                            {
+                                xtype: 'button',
+                                text: 'Gestione Tipi di Laurea',
+                                margin: '10 0 0 0',
+                                handler: function(){
+
+                                    Ext.widget("tipo_laurea_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_tipo_laurea").load();
+                                }
                             }
                         ]
                     }

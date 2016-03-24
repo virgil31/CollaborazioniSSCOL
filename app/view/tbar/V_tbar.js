@@ -21,7 +21,7 @@ Ext.define('CL.view.tbar.V_tbar', {
 		                xtype: 'button',
 		                width: 60,
 		                height: 60,
-		                style: "background-image: url('resources/images/logos/logo3.png') !important; " +
+		                style: "background-image: url('resources/images/logos/logo-red.png') !important; " +
 		                    "background-size: 100% 100%;" +
 		                    "border-color: transparent;" +
 		                    "background-color: transparent;" +

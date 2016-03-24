@@ -1,8 +1,8 @@
-Ext.define('CL.view.servizio.V_list', {
+Ext.define('CL.view.tipo_laurea.V_list', {
     extend: 'Ext.window.Window',
-    xtype: 'servizio_list',
-    itemId: 'servizio_list_id',
-    alias: 'widget.servizio_list',
+    xtype: 'tipo_laurea_list',
+    itemId: 'tipo_laurea_list_id',
+    alias: 'widget.tipo_laurea_list',
 
     bodyStyle: 'backgroundColor: transparent',  //per rendere il corpo invisibile
 
@@ -16,10 +16,10 @@ Ext.define('CL.view.servizio.V_list', {
     modal: true,
     constrain: true,
 
-    width: 850,
-    height: 500,
+    width: 460,
+    height: 400,
 
-    title: 'Gestione Servizi',
+    title: 'Gestione Tipi di tipo_laurea',
 
     tbar: [
         '->',
@@ -43,7 +43,7 @@ Ext.define('CL.view.servizio.V_list', {
             {
                 xtype: 'grid',
                 border: true,
-                store: 'S_servizio',
+                store: 'S_tipo_laurea',
                 height: '98%',
                 flex: 60,
                 autoscroll: true,
@@ -54,23 +54,18 @@ Ext.define('CL.view.servizio.V_list', {
 
                 dockedItems: [{
                     xtype: 'pagingtoolbar',
-                    store: 'S_servizio', // same store GridPanel is using
+                    store: 'S_tipo_laurea', // same store GridPanel is using
                     dock: 'bottom',
                     displayInfo: true
                 }],
 
                 listeners: {
                     itemdblclick: function( grid, record, item, index, e, eOpts ){
-                        CL.app.getController("C_servizio").onEdit(item,record);
+                        CL.app.getController("C_tipo_laurea").onEdit(item,record);
                     }
                 },
 
                 columns: [
-                    {
-                        text: '#',
-                        dataIndex: 'posizione',
-                        flex: 0.2
-                    },
                     {
                         text: 'Nome',
                         dataIndex: 'nome',
@@ -85,7 +80,7 @@ Ext.define('CL.view.servizio.V_list', {
                                 tooltip: 'Modifica',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    CL.app.getController("C_servizio").onEdit(this.el,rec);
+                                    CL.app.getController("C_tipo_laurea").onEdit(this.el,rec);
                                 }
                             },
                             {
@@ -93,7 +88,7 @@ Ext.define('CL.view.servizio.V_list', {
                                 tooltip: 'Elimina',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    CL.app.getController("C_servizio").onDestroy(rec);
+                                    CL.app.getController("C_tipo_laurea").onDestroy(rec);
                                 }
                             }
                         ]

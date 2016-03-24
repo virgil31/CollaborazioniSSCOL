@@ -25,7 +25,8 @@ Ext.application({
         'C_requisito',  //
 
         'C_signup',
-        'C_servizio'
+        'C_servizio',
+        'C_tipo_laurea'
     ],
 
     // vv ROUTING

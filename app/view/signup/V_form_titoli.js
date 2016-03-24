@@ -74,9 +74,11 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                             {
                                                 xtype: 'tagfield',
                                                 name: 'diploma_ids',
-                                                fieldLabel: 'Diploma',
+                                                fieldLabel: 'Diploma *',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
+                                                allowBlank: false,
+                                                forceSelection: true,
                                                 flex: 1
                                             },
                                             {
@@ -110,11 +112,16 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         items:[
                                             {
                                                 xtype: 'combobox',
+                                                store: 'S_tipo_laurea',
+                                                displayField: 'nome',
+                                                valueField: 'nome',
                                                 name: 'tipo_laurea',
                                                 fieldLabel: 'Tipo di Laurea',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
+                                                forceSelection: true,
+                                                queryMode: 'local',
+                                                anyMatch: true,
                                                 flex: 1
                                             },
                                             {
@@ -123,7 +130,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Denominazione Laurea',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             }
                                         ]
@@ -153,7 +159,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Tipo di Specializzazione',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             },
                                             {
@@ -162,7 +167,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Denominazione Specializzazione/Dottorato',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             }
                                         ]
@@ -192,7 +196,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Albo',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             },
                                             {
@@ -235,8 +238,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                             Ext.util.Cookies.set("signup_titoli",Ext.JSON.encode(titoli_values));
 
                                             CL.app.getController("C_signup").redirectTo("signup_profile");
-
-                                            Ext.ComponentQuery.query("toast")[0].destroy()
                                         }
                                     },
                                     {

@@ -28,7 +28,18 @@ Ext.define('CL.view.signup.V_form', {
                     '->',
                     {
                         xtype:'panel',
+                        layout: 'hbox',
                         items: [
+                            {
+                                xtype :'button',
+                                text: '< Indietro',
+                                padding: 20,
+                                style: 'background-color:#FF2626; text-color: white; border-color: white;',
+
+                                handler: function(){
+                                    CL.app.getController("C_signup").redirectTo("home");
+                                }
+                            },
                             {
                                 xtype :'button',
                                 text: 'Avanti >',
