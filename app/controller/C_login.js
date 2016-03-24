@@ -30,6 +30,8 @@ Ext.define('CL.controller.C_login', {
 
     //SHOW VIEW
     showView: function(){
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+        
         if(Ext.util.Cookies.get("ced_logged") == null){
             if(Ext.ComponentQuery.query('login').length == 0)
                 Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'login'});

@@ -3,7 +3,8 @@ Ext.define('CL.controller.C_signup', {
 
     routes: {
         'signup' : 'showView',
-        'signup_profile' : 'showViewprofilo'
+        'signup_profile' : 'showViewProfilo',
+        'signup_titles' : 'showViewTitoli'
     },
 
     stores: [
@@ -14,7 +15,8 @@ Ext.define('CL.controller.C_signup', {
     ],
     views: [
         'signup.V_form',
-        'signup.V_form_profilo'
+        'signup.V_form_profilo',
+        'signup.V_form_titoli'
     ],
 
     /////////////////////////////////////////////////
@@ -28,6 +30,8 @@ Ext.define('CL.controller.C_signup', {
 
     //SHOW VIEW
     showView: function(){
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+
         if(Ext.util.Cookies.get("ced_logged") !== null){
             this.redirectTo("admin_panel");
         }
@@ -37,16 +41,19 @@ Ext.define('CL.controller.C_signup', {
 
             Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('signup_form_id');
 
-            //carico le selezioni dagli eventuali cookies
-            var servizi_selezionati = Ext.JSON.decode(Ext.util.Cookies.get("servizi_selezionati"));
+
 
             Ext.StoreManager.lookup("S_servizio").load({
                 callback: function(){
-                    servizi_selezionati.forEach(function(servizio){
-                        var record_servizio = Ext.StoreManager.lookup("S_servizio").getById(servizio.id);
-                        Ext.ComponentQuery.query('signup_form')[0].down("grid").getSelectionModel().select(record_servizio,true,true);
-                        record_servizio.set({anni_esperienza: servizio.anni_esperienza});
-                    });
+                    //carico le selezioni dagli eventuali cookies
+                    var servizi_selezionati = Ext.JSON.decode(Ext.util.Cookies.get("servizi_selezionati"));
+                    if(servizi_selezionati!=null){
+                        servizi_selezionati.forEach(function(servizio){
+                            var record_servizio = Ext.StoreManager.lookup("S_servizio").getById(servizio.id);
+                            Ext.ComponentQuery.query('signup_form')[0].down("grid").getSelectionModel().select(record_servizio,true,true);
+                            record_servizio.set({anni_esperienza: servizio.anni_esperienza});
+                        });
+                    }
                 }
             });
 
@@ -54,7 +61,9 @@ Ext.define('CL.controller.C_signup', {
     },
 
     //SHOW VIEW PROFILO
-    showViewprofilo: function(){
+    showViewProfilo: function(){
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+
         if(Ext.util.Cookies.get("ced_logged") !== null){
             this.redirectTo("admin_panel");
         }
@@ -67,6 +76,38 @@ Ext.define('CL.controller.C_signup', {
             //carico gli eventuali cookies nel form
             var profilo_values = Ext.JSON.decode(Ext.util.Cookies.get("signup_profilo"));
             Ext.ComponentQuery.query("signup_form_profilo")[0].down('form').getForm().setValues(profilo_values);
+        }
+    },
+
+
+    //SHOW VIEW TITOLI
+    showViewTitoli: function(){
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+
+        if(Ext.util.Cookies.get("ced_logged") !== null){
+            this.redirectTo("admin_panel");
+        }
+        else{
+            if(Ext.ComponentQuery.query('signup_form_titoli').length == 0)
+                Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'signup_form_titoli'});
+
+            Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('signup_form_titoli_id');
+
+            Ext.ComponentQuery.query("signup_form_titoli")[0].down('form').getForm().setValues(titoli_values);
+
+            Ext.toast({
+                html: "Nel caso il candidato avesse più lauree o più specializzazioni, inserisca negli appositi campi solo quella più attinente alla tipologia di servizio professionale prescelto, riportando gli altri titoli nell'allegato CV che sarà sempre consultato per valutare adeguatamente le capacità e le competenze del candidato.",
+                title: 'Attenzione',
+                width: 600,
+                align: 't',
+                //closable: true,
+                listeners:{
+                    beforeclose: function(){return false;}
+                }
+            });
+
+            //carico gli eventuali cookies nel form
+            var titoli_values = Ext.JSON.decode(Ext.util.Cookies.get("signup_titoli"));
         }
     }
 

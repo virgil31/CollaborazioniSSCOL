@@ -1,8 +1,8 @@
-Ext.define('CL.view.signup.V_form_profilo', {
+Ext.define('CL.view.signup.V_form_titoli', {
     extend: 'Ext.panel.Panel',
-    xtype: 'signup_form_profilo',
-    itemId: 'signup_form_profilo_id',
-    alias: 'widget.signup_form_profilo',
+    xtype: 'signup_form_titoli',
+    itemId: 'signup_form_titoli_id',
+    alias: 'widget.signup_form_titoli',
 
     bodyStyle: 'backgroundColor: transparent',  //per rendere il corpo invisibile
 
@@ -32,7 +32,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                             '->',
                             {
                                 xtype: 'label',
-                                text: 'Profilo',
+                                text: 'Titoli',
                                 style:{
                                     color: '#42403E',
                                     fontSize: '22px',
@@ -46,7 +46,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                 items: [
                     {
                         xtype:'form',
-                        height: 580,
+                        height: 500,
                         width: '100%',
                         bodyStyle:'background: #FFF4E0',
                         padding: 10,
@@ -58,7 +58,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                         items: [
                             {
                                 xtype: 'panel',
-                                title: 'Dati Anagrafici',
+                                title: 'Diploma',
                                 width: '100%',
                                 layout: 'vbox',
                                 items: [
@@ -72,34 +72,33 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         },
                                         items:[
                                             {
-                                                xtype: 'textfield',
-                                                name: 'nome',
-                                                fieldLabel: 'Nome *',
+                                                xtype: 'tagfield',
+                                                name: 'diploma_ids',
+                                                fieldLabel: 'Diploma',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             },
                                             {
                                                 xtype: 'textfield',
                                                 name: 'cognome',
-                                                fieldLabel: 'Cognome *',
+                                                fieldLabel: 'Altro Diploma',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'cittadinanza',
-                                                fieldLabel: 'Cittadinanza *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
                                                 flex: 1
                                             }
                                         ]
-                                    },
+                                    }
+                                ]
+                            },
+                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            {
+                                xtype: 'panel',
+                                title: 'Laurea',
+                                width: '100%',
+                                layout: 'vbox',
+                                margin: '10 0 0 0',
+                                items: [
                                     {
                                         xtype:'panel',
                                         layout: 'hbox',
@@ -109,195 +108,105 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                             margin: '0 10 0 10'
                                         },
                                         items:[
+                                            {
+                                                xtype: 'combobox',
+                                                name: 'tipo_laurea',
+                                                fieldLabel: 'Tipo di Laurea',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1
+                                            },
+                                            {
+                                                xtype: 'textfield',
+                                                name: 'nome_laurea',
+                                                fieldLabel: 'Denominazione Laurea',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            {
+                                xtype: 'panel',
+                                title: 'Specializzazione/Dottorato',
+                                width: '100%',
+                                layout: 'vbox',
+                                margin: '10 0 0 0',
+                                items: [
+                                    {
+                                        xtype:'panel',
+                                        layout: 'hbox',
+                                        width: '100%',
+                                        bodyStyle:'background: #FFF4E0',
+                                        defaults:{
+                                            margin: '0 10 0 10'
+                                        },
+                                        items:[
+                                            {
+                                                xtype: 'combobox',
+                                                name: 'tipo_pecializzazione',
+                                                fieldLabel: 'Tipo di Specializzazione',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1
+                                            },
+                                            {
+                                                xtype: 'textfield',
+                                                name: 'nome_specializzazione',
+                                                fieldLabel: 'Denominazione Specializzazione/Dottorato',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            {
+                                xtype: 'panel',
+                                title: 'Iscrizione Albo Professionale',
+                                width: '100%',
+                                layout: 'vbox',
+                                margin: '10 0 0 0',
+                                items: [
+                                    {
+                                        xtype:'panel',
+                                        layout: 'hbox',
+                                        width: '100%',
+                                        bodyStyle:'background: #FFF4E0',
+                                        defaults:{
+                                            margin: '0 10 0 10'
+                                        },
+                                        items:[
+                                            {
+                                                xtype: 'textfield',
+                                                name: 'albo',
+                                                fieldLabel: 'Albo',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1
+                                            },
+                                            {
+                                                xtype: 'textfield',
+                                                name: 'numero_albo',
+                                                fieldLabel: 'Numero',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                flex: 1
+                                            },
                                             {
                                                 xtype: 'datefield',
-                                                name: 'data_nascita',
-                                                fieldLabel: 'Data di Nascita *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                editable:false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'combobox',
-                                                store: 'S_nazioni',
-                                                displayField: 'name',
-                                                valueField: 'name',
-                                                queryMode: 'local',
-                                                anyMatch: true,
-                                                forceSelection: true,
-                                                name: 'stato_nascita',
-                                                fieldLabel: 'Stato di Nascita *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'citta_nascita',
-                                                fieldLabel: 'Città di Nascita *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            {
-                                xtype: 'panel',
-                                title: 'Residenza',
-                                width: '100%',
-                                layout: 'vbox',
-                                margin: '10 0 0 0',
-                                items: [
-                                    {
-                                        xtype:'panel',
-                                        layout: 'hbox',
-                                        width: '100%',
-                                        bodyStyle:'background: #FFF4E0',
-                                        defaults:{
-                                            margin: '0 10 0 10'
-                                        },
-                                        items:[
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'indirizzo',
-                                                fieldLabel: 'Indirizzo *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'cap',
-                                                fieldLabel: 'CAP *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 0.1
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        xtype:'panel',
-                                        layout: 'hbox',
-                                        width: '100%',
-                                        bodyStyle:'background: #FFF4E0',
-                                        defaults:{
-                                            margin: '0 10 0 10'
-                                        },
-                                        items:[
-                                            {
-                                                xtype: 'combobox',
-                                                store: 'S_nazioni',
-                                                displayField: 'name',
-                                                valueField: 'name',
-                                                queryMode: 'local',
-                                                anyMatch: true,
-                                                forceSelection: true,
-                                                name: 'stato_residenza',
-                                                fieldLabel: 'Stato di Residenza *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'citta_residenza',
-                                                fieldLabel: 'Città di Residenza *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            {
-                                xtype: 'panel',
-                                title: 'Contatti',
-                                width: '100%',
-                                layout: 'vbox',
-                                margin: '10 0 0 0',
-                                items: [
-                                    {
-                                        xtype:'panel',
-                                        layout: 'hbox',
-                                        width: '100%',
-                                        bodyStyle:'background: #FFF4E0',
-                                        defaults:{
-                                            margin: '0 10 0 10'
-                                        },
-                                        items:[
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'email',
-                                                fieldLabel: 'E-mail *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'pec',
-                                                fieldLabel: 'PEC',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'telefono',
-                                                fieldLabel: 'Telefono *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            {
-                                xtype: 'panel',
-                                title: 'Dati Fiscali',
-                                width: '100%',
-                                layout: 'vbox',
-                                margin: '10 0 0 0',
-                                items: [
-                                    {
-                                        xtype:'panel',
-                                        layout: 'hbox',
-                                        width: '100%',
-                                        bodyStyle:'background: #FFF4E0',
-                                        defaults:{
-                                            margin: '0 10 0 10'
-                                        },
-                                        items:[
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'codice_fiscale',
-                                                fieldLabel: 'Codice Fiscale *',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                allowBlank: false,
-                                                flex: 1
-                                            },
-                                            {
-                                                xtype: 'textfield',
-                                                name: 'partita_iva',
-                                                fieldLabel: 'Partita IVA',
+                                                name: 'data_albo',
+                                                fieldLabel: 'Data di Iscrizione',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
                                                 flex: 1
@@ -319,13 +228,15 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         padding: 20,
                                         style: 'background-color:#FF2626; text-color: white; border-color: white;',
 
-                                        //quando voglio tornare indietro, salvo i servizi selezionati nel cookie "signup_profilo"
+                                        //quando voglio tornare indietro, salvo i servizi selezionati nel cookie "signup_titoli"
                                         handler: function(){
-                                            var profilo_values = this.up("form").getValues();
+                                            var titoli_values = this.up("form").getValues();
 
-                                            Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+                                            Ext.util.Cookies.set("signup_titoli",Ext.JSON.encode(titoli_values));
 
-                                            CL.app.getController("C_signup").redirectTo("signup");
+                                            CL.app.getController("C_signup").redirectTo("signup_profile");
+
+                                            Ext.ComponentQuery.query("toast")[0].destroy()
                                         }
                                     },
                                     {
@@ -335,15 +246,14 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         padding: 20,
                                         style: 'background-color:green; text-color: white; border-color: white;',
 
-                                        //quando ho finito, salvo i servizi selezionati nel cookie "signup_profilo"
+                                        //quando ho finito, salvo i servizi selezionati nel cookie "signup_titoli"
                                         handler: function(){
                                             if(this.up('form').isValid()){
-                                                var profilo_values = this.up("form").getValues();
+                                                var titoli_values = this.up("form").getValues();
 
-                                                Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
-
-                                                CL.app.getController("C_signup").redirectTo("signup_titles");
+                                                Ext.util.Cookies.set("signup_titoli",Ext.JSON.encode(titoli_values));
                                             }
+                                            Ext.ComponentQuery.query("toast")[0].destroy()
                                         }
                                     }
                                 ]

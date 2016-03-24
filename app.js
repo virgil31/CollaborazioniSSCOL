@@ -183,6 +183,7 @@ Ext.application({
                                 callback: function () {
                                     handleOldCard();
                                     handleNewCard();
+                                    Ext.ComponentQuery.query('viewport panel')[0].body.scrollTo('top',0);                    //AGGIUNTA PER LO SCROLL TOP
                                 }
                             });
 

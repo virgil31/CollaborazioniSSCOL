@@ -28,8 +28,8 @@ Ext.define('CL.controller.C_admin_panel', {
 
     //SHOW VIEW
     showView: function(){
-        //Ext.ComponentQuery.query("window").forEach(function(win){win.destroy();});  //per eliminare le vecchie windows
-
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+        
         if(Ext.util.Cookies.get("ced_logged") !== null){
             if(Ext.ComponentQuery.query('admin_panel').length == 0)
                 Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'admin_panel'});
