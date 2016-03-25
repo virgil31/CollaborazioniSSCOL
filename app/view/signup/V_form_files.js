@@ -25,6 +25,7 @@ Ext.define('CL.view.signup.V_form_files', {
                     align: 'center',
                     pack: 'center'
                 },
+                style: "border-radius: 5px;",
                 tbar: [
                     {
                         xtype: 'toolbar',
@@ -75,6 +76,11 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+                                            },
+                                            afterrender: function(){
+                                                this.fileInputEl.set({
+                                                    accept: '.pdf'
+                                                });
                                             }
                                         }
                                     },
@@ -90,13 +96,18 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+                                            },
+                                            afterrender: function(){
+                                                this.fileInputEl.set({
+                                                    accept: '.pdf'
+                                                });
                                             }
                                         }
                                     },
                                     {
                                         xtype: 'filefield',
                                         name: 'referenze_professionali',
-                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls</i>)",
+                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls / xlsx</i>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -105,6 +116,11 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+                                            },
+                                            afterrender: function(){
+                                                this.fileInputEl.set({
+                                                    accept: '.xls, .xlsx'
+                                                });
                                             }
                                         }
                                     }

@@ -24,6 +24,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                     align: 'center',
                     pack: 'center'
                 },
+                style: "border-radius: 5px;",
                 tbar: [
                     {
                         xtype: 'toolbar',

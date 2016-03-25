@@ -24,6 +24,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                     align: 'center',
                     pack: 'center'
                 },
+                style: "border-radius: 5px;",
                 tbar: [
                     {
                         xtype: 'toolbar',
@@ -116,23 +117,6 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                                 Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
                                                                 Ext.Msg.alert("Successo!","Diploma aggiunto. E' ora possibile selezionarlo.");
                                                             }
-                                                            /*
-                                                            var diploma_nome = Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].getValue();
-                                                            if(diploma_nome.length < 5){
-                                                                Ext.Msg.alert("Attenzione!","Il nome del diploma deve avere almeno 5 caratteri.");
-                                                            }
-                                                            else{
-                                                                Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].reset();
-                                                                Ext.StoreManager.lookup("S_diploma").add({nome:diploma_nome});
-                                                                setTimeout(function(){
-                                                                    Ext.StoreManager.lookup("S_diploma").sort('id', 'DESC');
-                                                                    setTimeout(function(){
-                                                                        var created_record = Ext.StoreManager.lookup("S_diploma").getAt(0);
-                                                                        Ext.ComponentQuery.query("signup_form_titoli tagfield[name=diploma_ids]")[0].select(created_record);
-                                                                        Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
-                                                                    },250);
-                                                                },250);
-                                                            }*/
                                                         }
                                                     }
                                                 ]
