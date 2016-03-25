@@ -141,7 +141,7 @@ function spostaFileEAggiornaIscrizione($file_object, $registrazione_individuale_
 	$extension = $path_info["extension"];
 	$final_file_name = $file_name .".".$extension;
 
-	$sub_direcorty_name = "".(floor($registrazione_individuale_id/5))."";
+	$sub_direcorty_name = "".(floor($registrazione_individuale_id/1000))."";
 
 	if(!file_exists($path_upload.$sub_direcorty_name))
         mkdir($path_upload.$sub_direcorty_name, 0775);
