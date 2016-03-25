@@ -24,6 +24,7 @@ if(isset($_GET["flag_full"])){
 	$statement = $pdo->prepare("
 		SELECT A.id, A.nome, COUNT(*) OVER() as total
 		FROM diploma A
+		ORDER BY $pro $dir
 	");
 }
 //LIST PAGINATO

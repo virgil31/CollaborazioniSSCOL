@@ -117,6 +117,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 editable:false,
+                                                format: 'd-m-Y',
                                                 flex: 1
                                             },
                                             {

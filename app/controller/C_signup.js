@@ -4,7 +4,8 @@ Ext.define('CL.controller.C_signup', {
     routes: {
         'signup' : 'showView',
         'signup_profile' : 'showViewProfilo',
-        'signup_titles' : 'showViewTitoli'
+        'signup_titles' : 'showViewTitoli',
+        'signup_files' : 'showViewFiles'
     },
 
     stores: [
@@ -16,7 +17,8 @@ Ext.define('CL.controller.C_signup', {
     views: [
         'signup.V_form',
         'signup.V_form_profilo',
-        'signup.V_form_titoli'
+        'signup.V_form_titoli',
+        'signup.V_form_files'
     ],
 
     /////////////////////////////////////////////////
@@ -128,7 +130,24 @@ Ext.define('CL.controller.C_signup', {
             },250);
 
         }
+    },
+
+
+    //SHOW VIEW FILEs
+    showViewFiles: function(){
+        try{Ext.ComponentQuery.query("toast")[0].destroy()}catch(e){}
+
+        if(Ext.util.Cookies.get("ced_logged") !== null){
+            this.redirectTo("admin_panel");
+        }
+        else{
+            if(Ext.ComponentQuery.query('signup_form_files').length == 0)
+                Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'signup_form_files'});
+
+            Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('signup_form_files_id');
+        }
     }
+
 
 
 });

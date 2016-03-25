@@ -81,7 +81,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 queryMode: "local",
                                                 anyMatch: true,
                                                 displayField: 'nome',
-                                                valueField: 'nome',
+                                                valueField: 'id',
                                                 allowBlank: false,
                                                 forceSelection: true,
                                                 flex: 1
@@ -113,6 +113,17 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                             else{
                                                                 Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].reset();
                                                                 Ext.StoreManager.lookup("S_diploma").add({nome:diploma_nome});
+                                                                Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
+                                                                Ext.Msg.alert("Successo!","Diploma aggiunto. E' ora possibile selezionarlo.");
+                                                            }
+                                                            /*
+                                                            var diploma_nome = Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].getValue();
+                                                            if(diploma_nome.length < 5){
+                                                                Ext.Msg.alert("Attenzione!","Il nome del diploma deve avere almeno 5 caratteri.");
+                                                            }
+                                                            else{
+                                                                Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].reset();
+                                                                Ext.StoreManager.lookup("S_diploma").add({nome:diploma_nome});
                                                                 setTimeout(function(){
                                                                     Ext.StoreManager.lookup("S_diploma").sort('id', 'DESC');
                                                                     setTimeout(function(){
@@ -121,7 +132,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                                         Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
                                                                     },250);
                                                                 },250);
-                                                            }
+                                                            }*/
                                                         }
                                                     }
                                                 ]
@@ -200,7 +211,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 store: 'S_tipo_specializzazione',
                                                 displayField: 'nome',
                                                 valueField: 'nome',
-                                                name: 'tipo_pecializzazione',
+                                                name: 'tipo_specializzazione',
                                                 fieldLabel: 'Tipo di Specializzazione',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
@@ -265,6 +276,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Data di Iscrizione',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
+                                                format: 'd-m-Y',
                                                 flex: 1
                                             }
                                         ]
@@ -304,11 +316,11 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         handler: function(){
                                             if(this.up('form').isValid()){
                                                 var titoli_values = this.up("form").getValues();
-                                                console.log(titoli_values);
 
                                                 Ext.util.Cookies.set("signup_titoli",Ext.JSON.encode(titoli_values));
 
                                                 Ext.ComponentQuery.query("toast")[0].destroy();
+                                                CL.app.getController("C_signup").redirectTo("signup_files");
                                             }
                                         }
                                     }
