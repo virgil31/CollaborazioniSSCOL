@@ -103,7 +103,33 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                         animateTarget: this.el
                                     });
 
-                                    Ext.StoreManager.lookup("S_tipo_laurea").load();
+                                    Ext.StoreManager.lookup("S_tipo_laurea").loadPage(1);
+                                }
+                            },
+                            {
+                                xtype: 'button',
+                                text: 'Gestione Diplomi',
+                                margin: '10 0 0 0',
+                                handler: function(){
+
+                                    Ext.widget("diploma_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_diploma").loadPage(1);
+                                }
+                            },
+                            {
+                                xtype: 'button',
+                                text: 'Gestione Tipi di Specializzazione',
+                                margin: '10 0 0 0',
+                                handler: function(){
+
+                                    Ext.widget("tipo_specializzazione_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_tipo_specializzazione").loadPage(1);
                                 }
                             }
                         ]

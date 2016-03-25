@@ -98,6 +98,16 @@ Ext.define('CL.controller.C_signup', {
                     flag_full: true
                 }
             });
+            Ext.StoreManager.lookup("S_tipo_specializzazione").load({
+                params:{
+                    flag_full: true
+                }
+            });
+            Ext.StoreManager.lookup("S_diploma").load({
+                params:{
+                    flag_full: true
+                }
+            });
 
             Ext.toast({
                 html: "Nel caso il candidato avesse più lauree o più specializzazioni, inserisca negli appositi campi solo quella più attinente alla tipologia di servizio professionale prescelto, riportando gli altri titoli nell'allegato CV che sarà sempre consultato per valutare adeguatamente le capacità e le competenze del candidato.",
@@ -112,7 +122,10 @@ Ext.define('CL.controller.C_signup', {
 
             //carico gli eventuali cookies nel form
             var titoli_values = Ext.JSON.decode(Ext.util.Cookies.get("signup_titoli"));
-            Ext.ComponentQuery.query("signup_form_titoli")[0].down('form').getForm().setValues(titoli_values);
+
+            setTimeout(function(){
+                Ext.ComponentQuery.query("signup_form_titoli")[0].down('form').getForm().setValues(titoli_values);
+            },250);
 
         }
     }

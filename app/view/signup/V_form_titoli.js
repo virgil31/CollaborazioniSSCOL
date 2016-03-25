@@ -77,18 +77,56 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 fieldLabel: 'Diploma *',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
+                                                store: 'S_diploma',
+                                                queryMode: "local",
+                                                anyMatch: true,
+                                                displayField: 'nome',
+                                                valueField: 'nome',
                                                 allowBlank: false,
                                                 forceSelection: true,
                                                 flex: 1
                                             },
                                             {
-                                                xtype: 'textfield',
-                                                name: 'cognome',
-                                                fieldLabel: 'Altro Diploma',
-                                                labelSeparator : '',
-                                                labelAlign: 'top',
-                                                flex: 1
+                                                xtype: 'panel',
+                                                flex: 1,
+                                                layout: 'hbox',
+                                                bodyStyle:'background: #FFF4E0',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        name: 'diploma_nome',
+                                                        fieldLabel: "Aggiungi altro Diploma (Una volta scritto, premere su '+')",
+                                                        labelSeparator : '',
+                                                        labelAlign: 'top',
+                                                        flex: 1
+                                                    },
+                                                    {
+                                                        xtype: 'button',
+                                                        text: '+',
+                                                        flex: 0.1,
+                                                        margin: '24 0 0 0',
+                                                        handler: function(){
+                                                            var diploma_nome = Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].getValue();
+                                                            if(diploma_nome.length < 5){
+                                                                Ext.Msg.alert("Attenzione!","Il nome del diploma deve avere almeno 5 caratteri.");
+                                                            }
+                                                            else{
+                                                                Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].reset();
+                                                                Ext.StoreManager.lookup("S_diploma").add({nome:diploma_nome});
+                                                                setTimeout(function(){
+                                                                    Ext.StoreManager.lookup("S_diploma").sort('id', 'DESC');
+                                                                    setTimeout(function(){
+                                                                        var created_record = Ext.StoreManager.lookup("S_diploma").getAt(0);
+                                                                        Ext.ComponentQuery.query("signup_form_titoli tagfield[name=diploma_ids]")[0].select(created_record);
+                                                                        Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
+                                                                    },250);
+                                                                },250);
+                                                            }
+                                                        }
+                                                    }
+                                                ]
                                             }
+
                                         ]
                                     }
                                 ]
@@ -122,7 +160,11 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                 forceSelection: true,
                                                 queryMode: 'local',
                                                 anyMatch: true,
-                                                flex: 1
+                                                flex: 1,
+                                                validator: function (val) {
+                                                    if(val.length == 0) this.reset();
+                                                    return true;
+                                                }
                                             },
                                             {
                                                 xtype: 'textfield',
@@ -155,11 +197,22 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         items:[
                                             {
                                                 xtype: 'combobox',
+                                                store: 'S_tipo_specializzazione',
+                                                displayField: 'nome',
+                                                valueField: 'nome',
                                                 name: 'tipo_pecializzazione',
                                                 fieldLabel: 'Tipo di Specializzazione',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
-                                                flex: 1
+                                                forceSelection: true,
+                                                queryMode: 'local',
+                                                anyMatch: true,
+                                                flex: 1,
+                                                validator: function (val) {
+                                                    if(val.length == 0) this.reset();
+                                                    return true;
+                                                }
+
                                             },
                                             {
                                                 xtype: 'textfield',
@@ -251,10 +304,12 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         handler: function(){
                                             if(this.up('form').isValid()){
                                                 var titoli_values = this.up("form").getValues();
+                                                console.log(titoli_values);
 
                                                 Ext.util.Cookies.set("signup_titoli",Ext.JSON.encode(titoli_values));
+
+                                                Ext.ComponentQuery.query("toast")[0].destroy();
                                             }
-                                            Ext.ComponentQuery.query("toast")[0].destroy()
                                         }
                                     }
                                 ]

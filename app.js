@@ -8,7 +8,7 @@ Ext.application({
     ],
 
     stores:[
-        'S_nazioni'
+        'S_nazioni' //JsonStore
     ],
 
     controllers: [
@@ -26,7 +26,9 @@ Ext.application({
 
         'C_signup',
         'C_servizio',
-        'C_tipo_laurea'
+        'C_tipo_laurea',
+        'C_diploma',
+        'C_tipo_specializzazione'
     ],
 
     // vv ROUTING

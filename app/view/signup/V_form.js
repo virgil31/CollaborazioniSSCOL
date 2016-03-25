@@ -36,7 +36,14 @@ Ext.define('CL.view.signup.V_form', {
                                 padding: 20,
                                 style: 'background-color:#FF2626; text-color: white; border-color: white;',
 
+                                //quando torno indietro, salvo i servizi selezionati nel cookie "servizi_selezionati"
                                 handler: function(){
+                                    var servizi_selezionati = this.up('signup_form').down('grid').getSelection();
+                                    var servizi_selezionati_lite = [];
+                                    servizi_selezionati.forEach(function(servizio){
+                                        servizi_selezionati_lite.push(servizio.data);
+                                    });
+                                    Ext.util.Cookies.set("servizi_selezionati",Ext.JSON.encode(servizi_selezionati_lite));
                                     CL.app.getController("C_signup").redirectTo("home");
                                 }
                             },

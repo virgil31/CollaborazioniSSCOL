@@ -55,7 +55,8 @@ Ext.define('CL.view.tbar.V_tbar', {
 					        	padding: 10,
 					        	margin: '0 2 0 0',
 					        	hidden: Ext.util.Cookies.get('ced_logged') != null,
-                                handler: function(){CL.app.getController("C_home").redirectTo("login")}
+                                handler: function(){CL.app.getController("C_home").redirectTo("login")},
+                                style: 'background: #D92B26;border-color: brown'
 					        }
 		            	]
 		            },
