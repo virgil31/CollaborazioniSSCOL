@@ -18,7 +18,7 @@ $s = $pdo->prepare("
 
         codice_fiscale,partita_iva,
 
-        tipo_laurea,nome_laurea,tipo_specializzazione,nome_specializzazione,albo,numero_albo,data_albo,
+        tipo_laurea,nome_laurea,tipo_specializzazione,nome_specializzazione,albo,numero_albo, ". (($data['data_albo']!="") ? ":data_albo," : "") ."
 
 		unique_seed
     )
@@ -31,7 +31,7 @@ $s = $pdo->prepare("
 
         :codice_fiscale, :partita_iva,
 
-        :tipo_laurea, :nome_laurea, :tipo_specializzazione, :nome_specializzazione, :albo, :numero_albo, :data_albo,
+        :tipo_laurea, :nome_laurea, :tipo_specializzazione, :nome_specializzazione, :albo, :numero_albo, ". (($data['data_albo']!="") ? ":data_albo," : "") ."
 
 		:unique_seed
     )
@@ -61,10 +61,12 @@ $params = array(
 	'nome_specializzazione' => $data['nome_specializzazione'],
 	'albo' => $data['albo'],
 	'numero_albo' => $data['numero_albo'],
-	'data_albo' => $data['data_albo'],
+	//'data_albo' => $data['data_albo'],
 
 	'unique_seed' => $unique_seed
 );
+
+if($data["data_albo"]!="") array_push($params,$data["data_albo"]);
 
 $success = $s->execute($params);
 $evetual_error = $pdo->errorInfo();
@@ -114,7 +116,8 @@ if ($success) {
         "success" => true,
         "result" => array(
             "id" => $registrazione_individuale_id
-        )
+        ),
+		"mail_inviata" => inviaMail("SSCOL@no-reply.com", "lucacerini92gmail.com", "OGGETTO - Conferma registrazione", "Link della conferma <b>QUI</b>")
     ));
 }
 else{
@@ -141,7 +144,7 @@ function spostaFileEAggiornaIscrizione($file_object, $registrazione_individuale_
 	$extension = $path_info["extension"];
 	$final_file_name = $file_name .".".$extension;
 
-	$sub_direcorty_name = "".(floor($registrazione_individuale_id/5))."";
+	$sub_direcorty_name = "".(floor($registrazione_individuale_id/1000))."";
 
 	if(!file_exists($path_upload.$sub_direcorty_name))
         mkdir($path_upload.$sub_direcorty_name, 0775);
@@ -172,4 +175,23 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+function inviaMail($from, $to, $oggetto, $testo){
+	/*$ini_array = parse_ini_file("../config.ini");
+	ini_set("SMTP", $ini_array["mail_host_smtp"]);
+    ini_set("sendmail_from",$from);
+
+	$subject = $oggetto;
+    $message = $testo;
+
+    //$headers = "From: YOURMAIL@gmail.com";
+
+    return mail($to, $subject, $message);*/
+	ini_set("SMTP", "192.168.1.4:25");
+    ini_set("sendmail_from", "YOURMAIL@gmail.com");
+    $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
+    $headers = "From: YOURMAIL@gmail.com";
+    return mail("lucacerini92@gmail.com", "Testing", $message, $headers);
+
 }

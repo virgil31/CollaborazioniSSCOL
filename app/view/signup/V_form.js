@@ -112,6 +112,7 @@ Ext.define('CL.view.signup.V_form', {
                             selType: 'checkboxmodel',
                             mode: 'SIMPLE',
                             showHeaderCheckbox: false,
+                            checkOnly: true,
                             listeners: {
                                 deselect: function( me, record, index, eOpts ){
                                     record.set({
