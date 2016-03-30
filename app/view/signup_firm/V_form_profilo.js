@@ -189,7 +189,7 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                                 queryMode: 'local',
                                                 anyMatch: true,
                                                 forceSelection: true,
-                                                name: 'stato_residenza',
+                                                name: 'stato_sede_legale',
                                                 fieldLabel: 'Stato di Residenza *',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
@@ -198,7 +198,7 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                             },
                                             {
                                                 xtype: 'textfield',
-                                                name: 'citta_residenza',
+                                                name: 'citta_sede_legale',
                                                 fieldLabel: 'Città di Residenza *',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
