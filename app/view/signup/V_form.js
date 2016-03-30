@@ -19,6 +19,7 @@ Ext.define('CL.view.signup.V_form', {
                 xtype: 'panel',
                 bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
                 width: '100%',
+                style: "border-radius: 5px;",
                 /*layout: {
                     type: 'vbox',
                     align: 'left',

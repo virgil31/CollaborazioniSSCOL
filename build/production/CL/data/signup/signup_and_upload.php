@@ -117,7 +117,7 @@ if ($success) {
         "result" => array(
             "id" => $registrazione_individuale_id
         ),
-		"mail_inviata" => inviaMail("Collaborazioni-SSCOL@no-reply.com", $data['email'], "Conferma registrazione", 'Si è pregati di confermare la registrazione cliccando su questo <a target="_blank" href="http://localhost/projects/Extjs_6.0.0/CollaborazioniSSCOL/#activate/'.$unique_seed.'">LINK</a>.')
+		"mail_inviata" => inviaMail("Collaborazioni-SSCOL@no-reply.com", $data['email'], "Conferma registrazione", 'Si è pregati di confermare la registrazione cliccando su questo <a target="_blank" href="http://localhost/projects/Extjs_6.0.0/CollaborazioniSSCOL/#activate/u/'.$unique_seed.'">LINK</a>.')
     ));
 }
 else{
@@ -179,15 +179,16 @@ function generateRandomString($length = 10) {
 
 function inviaMail($from, $to, $oggetto, $testo){
 	require '../../resources/lib/PHPMailer/PHPMailerAutoload.php';
+	$ini_array = parse_ini_file("../config.ini");
 
 	$mail = new PHPMailer;
 
 	//$mail->SMTPDebug = 3;
 
 	$mail->isSMTP();
-	$mail->Host = '192.168.1.4';
+	$mail->Host = $ini_array["smtp_host"];
 	$mail->SMTPAuth = false;
-	$mail->Port = 25;
+	$mail->Port = $ini_array["smtp_port"];
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(

@@ -28,7 +28,9 @@ Ext.application({
         'C_servizio',
         'C_tipo_laurea',
         'C_diploma',
-        'C_tipo_specializzazione'
+        'C_tipo_specializzazione',
+
+        'C_activate'
     ],
 
     // vv ROUTING

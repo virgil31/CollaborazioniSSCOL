@@ -20,6 +20,7 @@ Ext.define('CL.view.home.V_home', {
                 xtype: 'panel',
                 bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
                 width: 940,
+                style: "border-radius: 5px;",
                 tbar: [
                     {
                         xtype: 'toolbar',
