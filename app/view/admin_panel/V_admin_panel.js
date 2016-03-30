@@ -95,6 +95,21 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                             },
                             {
                                 xtype: 'button',
+                                text: 'Gestione Registrazioni',
+                                margin: '10 0 0 0',
+                                disabled: true
+                                /*handler: function(){
+
+                                    Ext.widget("servizio_list",{
+                                        animateTarget: this.el
+                                    });
+
+                                    Ext.StoreManager.lookup("S_servizio").load();
+                                }*/
+                            },
+                            {xtype: 'menuseparator',width:'95%',margin: '10 0 0 0'},
+                            {
+                                xtype: 'button',
                                 text: 'Gestione Tipi di Laurea',
                                 margin: '10 0 0 0',
                                 handler: function(){

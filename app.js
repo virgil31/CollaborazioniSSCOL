@@ -31,7 +31,9 @@ Ext.application({
         'C_diploma',
         'C_tipo_specializzazione',
 
-        'C_activate'
+        'C_activate',
+
+        'C_signup_firm'
     ],
 
     // vv ROUTING
@@ -112,7 +114,7 @@ Ext.application({
     applyOverrides: function () {
         //override messaggio EN -> ITA
         Ext.override(Ext.form.field.VTypes,{
-            emailText: 'Inserire una e-mail valida.',
+            emailText: 'Inserire una e-mail valida.'
         });
         Ext.override(Ext.form.field.Text,{
             blankText: 'Campo richiesto',
