@@ -76,11 +76,11 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+
+                                                this.fileInputEl.set({accept: '.pdf'});
                                             },
                                             afterrender: function(){
-                                                this.fileInputEl.set({
-                                                    accept: '.pdf'
-                                                });
+                                                this.fileInputEl.set({accept: '.pdf'});
                                             }
                                         }
                                     },
@@ -96,11 +96,11 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+
+                                                this.fileInputEl.set({accept: '.pdf'});
                                             },
                                             afterrender: function(){
-                                                this.fileInputEl.set({
-                                                    accept: '.pdf'
-                                                });
+                                                this.fileInputEl.set({accept: '.pdf'});
                                             }
                                         }
                                     },
@@ -116,11 +116,31 @@ Ext.define('CL.view.signup.V_form_files', {
                                             change: function(fld, value) {
                                                 var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                 fld.setRawValue(newValue);
+
+                                                this.fileInputEl.set({accept: '.xls,.xlsx'});
                                             },
                                             afterrender: function(){
-                                                this.fileInputEl.set({
-                                                    accept: '.xls, .xlsx'
-                                                });
+                                                this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                            }
+                                        }
+                                    },
+                                    {
+                                        xtype: 'filefield',
+                                        name: 'dichiarazione_sostitutiva',
+                                        fieldLabel: "<b>Dichiarazione Sostitutiva</b>  (<i>pdf</i>)",
+                                        labelAlign: 'top',
+                                        allowBlank: false,
+                                        buttonText: 'Seleziona file...',
+                                        width: "100%",
+                                        listeners: {
+                                            change: function(fld, value) {
+                                                var newValue = value.replace(/C:\\fakepath\\/g, '');
+                                                fld.setRawValue(newValue);
+
+                                                this.fileInputEl.set({accept: '.pdf'});
+                                            },
+                                            afterrender: function(){
+                                                this.fileInputEl.set({accept: '.pdf'});
                                             }
                                         }
                                     }

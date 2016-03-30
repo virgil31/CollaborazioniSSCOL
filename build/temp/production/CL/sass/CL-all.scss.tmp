@@ -919,7 +919,7 @@ $include-ext-view-table: dynamic(true);;
 $include-ext-view-tablelayout: dynamic(true);;
 $include-ext-view-view: dynamic(true);;
 $include-ext-window-messagebox: dynamic(true);;
-$include-ext-window-toast: dynamic(false);;
+$include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
 $output-paths: ("path": "../resources");
 
@@ -1265,6 +1265,7 @@ $relative-image-path-for-uis: $theme-neutral-resource-path;
 @import '../../../../../ext/classic/theme-neutral/sass/src/grid/plugin/RowExpander';
 @import '../../../../../ext/classic/theme-neutral/sass/src/resizer/Resizer';
 @import '../../../../../ext/classic/theme-neutral/sass/src/selection/CheckboxModel';
+@import '../../../../../ext/classic/theme-neutral/sass/src/window/Toast';
 
 /* including package theme-neptune */
 $theme-neptune-resource-root: '' !default;

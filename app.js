@@ -4,7 +4,8 @@ Ext.application({
     name: 'CL',
 
     requires: [
-        'CL.view.utils.SRCComponent'
+        'CL.view.utils.SRCComponent',
+        'Ext.window.Toast'
     ],
 
     stores:[

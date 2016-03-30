@@ -107,6 +107,7 @@ foreach ($data["diploma_ids"] as $diploma_id) {
 spostaFileEAggiornaIscrizione($_FILES["curriculum"],$registrazione_individuale_id,"url_curriculum");
 spostaFileEAggiornaIscrizione($_FILES["documento_identita"],$registrazione_individuale_id,"url_documento_identita");
 spostaFileEAggiornaIscrizione($_FILES["referenze_professionali"],$registrazione_individuale_id,"url_referenze_professionali");
+spostaFileEAggiornaIscrizione($_FILES["dichiarazione_sostitutiva"],$registrazione_individuale_id,"url_dichiarazione_sostitutiva");
 
 // invio mail con link di attivazione ($unique_seed)
 //TODO
