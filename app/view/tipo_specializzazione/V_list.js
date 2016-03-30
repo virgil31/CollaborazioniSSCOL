@@ -19,7 +19,7 @@ Ext.define('CL.view.tipo_specializzazione.V_list', {
     width: 460,
     height: 400,
 
-    title: 'Gestione Tipi di tipo_specializzazione',
+    title: 'Gestione Tipi di Specializzazione',
 
     tbar: [
         '->',

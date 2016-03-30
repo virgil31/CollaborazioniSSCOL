@@ -18,18 +18,7 @@ Ext.define('CL.controller.C_home', {
     /////////////////////////////////////////////////
     init: function () {
         this.control({
-
-            // TEST WINDOW
-            'home button[action=test_window]':{
-                click: this.testWindow
-            },
-
-            //GO TO OTHER VIEW
-            'home button[action=go_to_second_view]':{
-                click: this.goToSecondView
-            }
-
-
+            
         }, this);
     },
     /////////////////////////////////////////////////
@@ -58,7 +47,7 @@ Ext.define('CL.controller.C_home', {
         localStorage.removeItem('TutorialLoggedIn');
 
         this.redirectTo('login');
-    }    
+    }
 
 
 });

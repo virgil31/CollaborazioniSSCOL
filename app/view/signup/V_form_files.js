@@ -182,7 +182,7 @@ Ext.define('CL.view.signup.V_form_files', {
                                                                 Ext.util.Cookies.clear("signup_titoli");
                                                                 */
 
-                                                                Ext.Msg.alert('Perfetto!', "Registrazione completata! A breve riceverà una mail di attivazione su <b>"+full_form_values.email+"</b>", function(){
+                                                                Ext.Msg.alert('Perfetto!', "Registrazione completata! A breve riceverà una mail con codice di attivazione su <b>"+full_form_values.email+"</b>", function(){
                                                                     CL.app.getController("C_signup").redirectTo("home");
                                                                     location.reload();
                                                                 });

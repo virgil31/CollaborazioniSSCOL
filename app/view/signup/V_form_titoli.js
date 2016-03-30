@@ -114,7 +114,11 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                                             else{
                                                                 Ext.ComponentQuery.query("signup_form_titoli textfield[name=diploma_nome]")[0].reset();
                                                                 Ext.StoreManager.lookup("S_diploma").add({nome:diploma_nome});
-                                                                Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
+
+                                                                setTimeout(function(){
+                                                                    Ext.StoreManager.lookup("S_diploma").sort('nome', 'ASC');
+                                                                }, 300);
+
                                                                 Ext.Msg.alert("Successo!","Diploma aggiunto. E' ora possibile selezionarlo.");
                                                             }
                                                         }

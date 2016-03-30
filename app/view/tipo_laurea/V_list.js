@@ -19,7 +19,7 @@ Ext.define('CL.view.tipo_laurea.V_list', {
     width: 460,
     height: 400,
 
-    title: 'Gestione Tipi di tipo_laurea',
+    title: 'Gestione Tipi di Laurea',
 
     tbar: [
         '->',

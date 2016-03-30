@@ -68,9 +68,11 @@ Ext.define('CL.view.tbar.V_tbar', {
 							{
 					        	xtype: 'button',
 					        	tooltip: 'Esci',
-					        	action: 'do_logout',
+					        	action: 'do_logout',                                
+					        	padding: 10,
 					        	iconCls: 'x-fa fa-remove',
-					        	hidden: Ext.util.Cookies.get('ced_logged') == null
+					        	hidden: Ext.util.Cookies.get('ced_logged') == null,
+                                style: 'background: #D92B26;border-color: brown'
 					        }
 		            	]
 		            }

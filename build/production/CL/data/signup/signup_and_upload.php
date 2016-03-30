@@ -117,7 +117,7 @@ if ($success) {
         "result" => array(
             "id" => $registrazione_individuale_id
         ),
-		"mail_inviata" => inviaMail("SSCOL@no-reply.com", "lucacerini92gmail.com", "OGGETTO - Conferma registrazione", "Link della conferma <b>QUI</b>")
+		"mail_inviata" => inviaMail("Collaborazioni-SSCOL@no-reply.com", $data['email'], "Conferma registrazione", 'Si è pregati di confermare la registrazione cliccando su questo <a target="_blank" href="http://localhost/projects/Extjs_6.0.0/CollaborazioniSSCOL/#activate/'.$unique_seed.'">LINK</a>.')
     ));
 }
 else{
@@ -178,20 +178,39 @@ function generateRandomString($length = 10) {
 }
 
 function inviaMail($from, $to, $oggetto, $testo){
-	/*$ini_array = parse_ini_file("../config.ini");
-	ini_set("SMTP", $ini_array["mail_host_smtp"]);
-    ini_set("sendmail_from",$from);
+	require '../../resources/lib/PHPMailer/PHPMailerAutoload.php';
 
-	$subject = $oggetto;
-    $message = $testo;
+	$mail = new PHPMailer;
 
-    //$headers = "From: YOURMAIL@gmail.com";
+	//$mail->SMTPDebug = 3;
 
-    return mail($to, $subject, $message);*/
-	ini_set("SMTP", "192.168.1.4:25");
-    ini_set("sendmail_from", "YOURMAIL@gmail.com");
-    $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
-    $headers = "From: YOURMAIL@gmail.com";
-    return mail("lucacerini92@gmail.com", "Testing", $message, $headers);
+	$mail->isSMTP();
+	$mail->Host = '192.168.1.4';
+	$mail->SMTPAuth = false;
+	$mail->Port = 25;
+
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+		    'verify_peer' => false,
+		    'verify_peer_name' => false,
+		    'allow_self_signed' => true
+		)
+	);
+
+
+	$mail->setFrom($from, 'Collaborazioni SSCOL');
+	$mail->addAddress($to);
+
+	$mail->Subject = $oggetto;
+	$mail->Body    = $testo."<br><br><b><i>La presente e-mail è stata generata automaticamente da un indirizzo di posta elettronica di solo invio; si chiede pertanto di non rispondere al messaggio.</i></b>";
+	//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+	$mail->isHTML(true);
+
+	if(!$mail->send())
+	    return 'Mailer Error: ' . $mail->ErrorInfo;
+	else
+	    return 'Message has been sent';
+
 
 }
