@@ -179,15 +179,16 @@ function generateRandomString($length = 10) {
 
 function inviaMail($from, $to, $oggetto, $testo){
 	require '../../resources/lib/PHPMailer/PHPMailerAutoload.php';
+	$ini_array = parse_ini_file("../config.ini");
 
 	$mail = new PHPMailer;
 
 	//$mail->SMTPDebug = 3;
 
 	$mail->isSMTP();
-	$mail->Host = '192.168.1.4';
+	$mail->Host = $ini_array["smtp_host"];
 	$mail->SMTPAuth = false;
-	$mail->Port = 25;
+	$mail->Port = $ini_array["smtp_port"];
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(
