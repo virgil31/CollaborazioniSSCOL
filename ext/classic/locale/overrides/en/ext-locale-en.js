@@ -45,7 +45,7 @@ Ext.onReady(function() {
 
         Ext.Date.parseCodes.S.s = "(?:st|nd|rd|th)";
     }
-    
+
     if (Ext.util && Ext.util.Format) {
         Ext.apply(Ext.util.Format, {
             thousandSeparator: ',',
@@ -357,7 +357,7 @@ Ext.define("Ext.locale.en.window.MessageBox", {
         cancel: "Cancel",
         yes: "Yes",
         no: "No"
-    }    
+    }
 });
 
 Ext.define("Ext.locale.en.grid.filters.Filters", {
@@ -398,6 +398,6 @@ Ext.define("Ext.locale.en.grid.filters.filter.String", {
 });
 
 // This is needed until we can refactor all of the locales into individual files
-Ext.define("Ext.locale.en.Component", {	
+Ext.define("Ext.locale.en.Component", {
     override: "Ext.Component"
 });

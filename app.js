@@ -110,6 +110,17 @@ Ext.application({
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     applyOverrides: function () {
+        //override messaggio EN -> ITA
+        Ext.override(Ext.form.field.VTypes,{
+            emailText: 'Inserire una e-mail valida.',
+        });
+        Ext.override(Ext.form.field.Text,{
+            blankText: 'Campo richiesto',
+            minLengthText: 'La lunghezza minima di questo campo è {0}',
+            maxLengthText: 'La lunghezza massima di questo campo è {0}'
+        });
+
+
         /*
          fade animation card layout
          */

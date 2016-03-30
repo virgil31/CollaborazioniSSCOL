@@ -17,7 +17,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
         this_view.items = [
             {
                 xtype: 'panel',
-                bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
+                bodyStyle: 'backgroundColor: #F5F5F5;',
                 width: '100%',
                 layout: {
                     type: 'vbox',
@@ -47,9 +47,9 @@ Ext.define('CL.view.signup.V_form_profilo', {
                 items: [
                     {
                         xtype:'form',
-                        height: 580,
+                        //height: 580,
                         width: '100%',
-                        bodyStyle:'background: #FFF4E0',
+                        bodyStyle:'background: #F5F5F5',
                         padding: 10,
                         layout: {
                             type: 'vbox',
@@ -69,7 +69,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -107,7 +107,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -163,7 +163,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -192,7 +192,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -237,7 +237,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -247,6 +247,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
+                                                vtype: 'email',
                                                 flex: 1
                                             },
                                             {
@@ -254,6 +255,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 name: 'pec',
                                                 fieldLabel: 'PEC',
                                                 labelSeparator : '',
+                                                vtype: 'email',
                                                 labelAlign: 'top',
                                                 flex: 1
                                             },
@@ -284,7 +286,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 10 10'
                                         },
                                         items:[
                                             {
@@ -294,7 +296,9 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
                                                 allowBlank: false,
-                                                flex: 1
+                                                flex: 1,
+                                                minLength: 16,
+                                                maxLength: 16
                                             },
                                             {
                                                 xtype: 'textfield',
@@ -312,7 +316,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                             {
                                 xtype:'panel',
                                 type: 'hbox',
-                                bodyStyle:'background: #FFF4E0',
+                                bodyStyle:'background: #F5F5F5',
                                 items: [
                                     {
                                         xtype :'button',

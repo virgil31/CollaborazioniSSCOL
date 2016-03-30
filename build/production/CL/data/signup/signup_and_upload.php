@@ -109,9 +109,6 @@ spostaFileEAggiornaIscrizione($_FILES["documento_identita"],$registrazione_indiv
 spostaFileEAggiornaIscrizione($_FILES["referenze_professionali"],$registrazione_individuale_id,"url_referenze_professionali");
 spostaFileEAggiornaIscrizione($_FILES["dichiarazione_sostitutiva"],$registrazione_individuale_id,"url_dichiarazione_sostitutiva");
 
-// invio mail con link di attivazione ($unique_seed)
-//TODO
-
 if ($success) {
     echo json_encode(array(
         "success" => true,

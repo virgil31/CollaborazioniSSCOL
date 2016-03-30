@@ -17,7 +17,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
         this_view.items = [
             {
                 xtype: 'panel',
-                bodyStyle: 'backgroundColor: rgba(255,255,255,0.75);',
+                bodyStyle: 'backgroundColor: #F5F5F5;',
                 width: '100%',
                 layout: {
                     type: 'vbox',
@@ -47,9 +47,9 @@ Ext.define('CL.view.signup.V_form_titoli', {
                 items: [
                     {
                         xtype:'form',
-                        height: 500,
+                        //height: 500,
                         width: '100%',
-                        bodyStyle:'background: #FFF4E0',
+                        bodyStyle:'background: #F5F5F5',
                         padding: 10,
                         layout: {
                             type: 'vbox',
@@ -69,7 +69,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 20 10'
                                         },
                                         items:[
                                             {
@@ -144,7 +144,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 20 10'
                                         },
                                         items:[
                                             {
@@ -191,7 +191,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 20 10'
                                         },
                                         items:[
                                             {
@@ -239,7 +239,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                                         width: '100%',
                                         bodyStyle:'background: #FFF4E0',
                                         defaults:{
-                                            margin: '0 10 0 10'
+                                            margin: '0 10 20 10'
                                         },
                                         items:[
                                             {
@@ -275,7 +275,7 @@ Ext.define('CL.view.signup.V_form_titoli', {
                             {
                                 xtype:'panel',
                                 type: 'hbox',
-                                bodyStyle:'background: #FFF4E0',
+                                bodyStyle:'background: #F5F5F5',
                                 items: [
                                     {
                                         xtype :'button',
