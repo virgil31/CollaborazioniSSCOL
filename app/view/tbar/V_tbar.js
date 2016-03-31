@@ -10,6 +10,14 @@ Ext.define('CL.view.tbar.V_tbar', {
 	initComponent: function() {
 		var this_view = this;
 
+        Ext.StoreManager.lookup("S_impostazioni_generali").load({
+            callback: function(){
+                var titolo_tbar = this.getAt(0).get("titolo_tbar");
+
+                Ext.ComponentQuery.query("tbar label[name=titolo_tbar]")[0].setText(titolo_tbar);
+            }
+        });
+
 		this_view.items = [
 			'->',
 		    {
@@ -33,7 +41,8 @@ Ext.define('CL.view.tbar.V_tbar', {
 		            },
 		            {
 		                xtype: 'label',
-                        text: 'Soprintendenza Speciale per il Colosseo, il MNR e l\'Area Archeologica di Roma',
+                        name: 'titolo_tbar',
+                        //text: 'Soprintendenza Speciale per il Colosseo, il MNR e l\'Area Archeologica di Roma',
 		                margin: '0 0 0 10',
                         style:{
                             color: 'white',

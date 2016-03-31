@@ -21,7 +21,20 @@ Ext.define('CL.view.impostazioni_generali.V_edit', {
         this_view.items = [
             {
                 xtype: 'form',
+                layout: {
+                    type: 'vbox',
+                    align: 'center'
+                },
                 items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'titolo_tbar',
+                        fieldLabel: 'Titolo Barra Superiore',
+                        labelWidth: 150,
+                        width: '90%',
+                        allowBlank: false
+                    },
+                    {xtype: 'menuseparator',width: '95%'},
                     {
                         xtype: 'htmleditor',
                         fieldLabel: '<b>Testo HomePage</b>',

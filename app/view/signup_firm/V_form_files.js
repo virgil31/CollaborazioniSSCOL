@@ -74,10 +74,18 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         width: "100%",
                                         listeners: {
                                             change: function(fld, value) {
-                                                var newValue = value.replace(/C:\\fakepath\\/g, '');
-                                                fld.setRawValue(newValue);
+                                                if(value != ""){
+                                                    var newValue = value.replace(/C:\\fakepath\\/g, '');
+                                                    fld.setRawValue(newValue);
 
-                                                this.fileInputEl.set({accept: '.pdf'});
+                                                    this.fileInputEl.set({accept: '.pdf'});
+
+                                                    var extension = newValue.split('.').pop();
+                                                    if(extension != "pdf"){
+                                                        this.reset();
+                                                        this.fileInputEl.set({accept: '.pdf'});
+                                                    }
+                                                }
                                             },
                                             afterrender: function(){
                                                 this.fileInputEl.set({accept: '.pdf'});
@@ -94,10 +102,18 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         width: "100%",
                                         listeners: {
                                             change: function(fld, value) {
-                                                var newValue = value.replace(/C:\\fakepath\\/g, '');
-                                                fld.setRawValue(newValue);
+                                                if(value != ""){
+                                                    var newValue = value.replace(/C:\\fakepath\\/g, '');
+                                                    fld.setRawValue(newValue);
 
-                                                this.fileInputEl.set({accept: '.pdf'});
+                                                    this.fileInputEl.set({accept: '.pdf'});
+
+                                                    var extension = newValue.split('.').pop();
+                                                    if(extension != "pdf"){
+                                                        this.reset();
+                                                        this.fileInputEl.set({accept: '.pdf'});
+                                                    }
+                                                }
                                             },
                                             afterrender: function(){
                                                 this.fileInputEl.set({accept: '.pdf'});
@@ -114,10 +130,18 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         width: "100%",
                                         listeners: {
                                             change: function(fld, value) {
-                                                var newValue = value.replace(/C:\\fakepath\\/g, '');
-                                                fld.setRawValue(newValue);
+                                                if(value != ""){
+                                                    var newValue = value.replace(/C:\\fakepath\\/g, '');
+                                                    fld.setRawValue(newValue);
 
-                                                this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                                    this.fileInputEl.set({accept: '.xls,.xlsx'});
+
+                                                    var extension = newValue.split('.').pop();
+                                                    if(extension != "xls" && extension != "xlsx"){
+                                                        this.reset();
+                                                        this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                                    }
+                                                }
                                             },
                                             afterrender: function(){
                                                 this.fileInputEl.set({accept: '.xls,.xlsx'});
@@ -134,10 +158,19 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         width: "100%",
                                         listeners: {
                                             change: function(fld, value) {
-                                                var newValue = value.replace(/C:\\fakepath\\/g, '');
-                                                fld.setRawValue(newValue);
+                                                if(value != ""){
+                                                    var newValue = value.replace(/C:\\fakepath\\/g, '');
+                                                    fld.setRawValue(newValue);
 
-                                                this.fileInputEl.set({accept: '.pdf'});
+                                                    this.fileInputEl.set({accept: '.pdf'});
+
+                                                    var extension = newValue.split('.').pop();
+                                                    if(extension != "pdf"){
+                                                        this.reset();
+                                                        this.fileInputEl.set({accept: '.pdf'});
+                                                    }
+
+                                                }
                                             },
                                             afterrender: function(){
                                                 this.fileInputEl.set({accept: '.pdf'});

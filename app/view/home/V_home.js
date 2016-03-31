@@ -18,9 +18,10 @@ Ext.define('CL.view.home.V_home', {
         Ext.StoreManager.lookup("S_impostazioni_generali").load({
             callback: function(){
                 var testo_home = this.getAt(0).get("testo_home");
+
                 Ext.ComponentQuery.query("home panel[name=testo_home]")[0].setHtml(testo_home);
             }
-        })
+        });
 
 
         this_view.items = [

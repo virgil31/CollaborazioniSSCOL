@@ -122,10 +122,13 @@ Ext.application({
             emailText: 'Inserire una e-mail valida.'
         });
         Ext.override(Ext.form.field.Text,{
+            labelSeparator : '',
             blankText: 'Campo richiesto',
             minLengthText: 'La lunghezza minima di questo campo è {0}',
             maxLengthText: 'La lunghezza massima di questo campo è {0}'
         });
+
+
 
 
         /*
