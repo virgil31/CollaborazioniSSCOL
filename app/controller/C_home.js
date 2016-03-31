@@ -18,7 +18,7 @@ Ext.define('CL.controller.C_home', {
     /////////////////////////////////////////////////
     init: function () {
         this.control({
-            
+
         }, this);
     },
     /////////////////////////////////////////////////
@@ -26,28 +26,14 @@ Ext.define('CL.controller.C_home', {
     //ROUTES
 
     showView: function(){
-        if(Ext.util.Cookies.get("ced_logged") !== null){
-            this.redirectTo("admin_panel");
-        }
-        else{
-            if(Ext.ComponentQuery.query('home').length == 0)
-                Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'home'});
+        if(Ext.ComponentQuery.query('home').length == 0)
+            Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'home'});
 
-            Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('home_id');
-        }
-
-    },
+        Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('home_id');
+    }
 
     /////////////////////////////////////////////////
 
-
-    //DO LOGOUT
-    doLogout: function () {
-        // Remove the localStorage key/value
-        localStorage.removeItem('TutorialLoggedIn');
-
-        this.redirectTo('login');
-    }
 
 
 });

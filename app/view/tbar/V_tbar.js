@@ -50,28 +50,12 @@ Ext.define('CL.view.tbar.V_tbar', {
 							{
 					        	xtype: 'button',
 					        	text: 'Pannello Amministrativo',
-					        	action: 'go_to_login',
+					        	//action: 'go_to_login',
 					        	iconCls: 'x-fa fa-star',
 					        	padding: 10,
 					        	margin: '0 2 0 0',
-					        	hidden: Ext.util.Cookies.get('ced_logged') != null,
-                                handler: function(){CL.app.getController("C_home").redirectTo("login")},
-                                style: 'background: #D92B26;border-color: brown'
-					        }
-		            	]
-		            },
-		            {
-		            	xtype: 'form',
-	    		        bodyStyle: "background-color: transparent;",
-
-		            	items: [
-							{
-					        	xtype: 'button',
-					        	tooltip: 'Esci',
-					        	action: 'do_logout',                                
-					        	padding: 10,
-					        	iconCls: 'x-fa fa-remove',
-					        	hidden: Ext.util.Cookies.get('ced_logged') == null,
+					        	//hidden: Ext.util.Cookies.get('ced_logged') != null,
+                                handler: function(){CL.app.getController("C_home").redirectTo("admin_panel")},
                                 style: 'background: #D92B26;border-color: brown'
 					        }
 		            	]

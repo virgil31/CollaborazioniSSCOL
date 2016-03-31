@@ -14,22 +14,9 @@ Ext.define('CL.controller.C_tbar', {
     /////////////////////////////////////////////////
     init: function () {
         this.control({
-            // DO LOGOUT
-            'tbar button[action=do_logout]':{
-                click: this.doLogout
-            }
-
+            
         }, this);
-    },
-    /////////////////////////////////////////////////
-
-
-
-    //DO LOGOUT
-    doLogout: function () {
-        Ext.util.Cookies.clear("ced_logged");
-        CL.app.getController("C_tbar").redirectTo('home');
-        location.reload();
     }
+    /////////////////////////////////////////////////
 
 });

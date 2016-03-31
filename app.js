@@ -33,7 +33,8 @@ Ext.application({
 
         'C_activate',
 
-        'C_signup_firm'
+        'C_signup_firm',
+        'C_impostazioni_generali'
     ],
 
     // vv ROUTING
@@ -71,6 +72,9 @@ Ext.application({
         //Ext.getDoc().on('contextmenu', function(ev) {
         //     ev.preventDefault();
         //});
+        Ext.enableAria = false;
+        Ext.enableAriaButtons = false;
+        Ext.enableAriaPanels = false;
 
 
         Ext.create('Ext.container.Viewport',{

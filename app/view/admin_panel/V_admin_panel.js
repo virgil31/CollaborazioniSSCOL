@@ -81,13 +81,39 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                 }
                             },*/
                             {
+					        	xtype: 'button',
+                                text: 'Logout',
+					        	tooltip: 'Esci',
+					        	action: 'do_logout',
+					        	padding: 10,
+					        	iconCls: 'x-fa fa-remove',
+					        	//hidden: Ext.util.Cookies.get('ced_logged') == null,
+                                style: 'background: #D92B26;border-color: brown',
+                                handler: function(){
+                                    Ext.util.Cookies.clear("ced_logged");
+                                    CL.app.getController("C_tbar").redirectTo('home');
+                                    location.reload();
+                                }
+					        },
+                            {xtype: 'menuseparator',width:'95%',margin: '10 0 0 0'},
+                            {
+                                xtype: 'button',
+                                text: 'Impostazioni Generali',
+                                margin: '10 0 0 0',
+                                handler: function(){
+                                    var rec = Ext.StoreManager.lookup("S_impostazioni_generali").getAt(0);
+                                    CL.app.getController("C_impostazioni_generali").onEdit(this.el,rec);
+                                }
+                            },
+                            {
                                 xtype: 'button',
                                 text: 'Gestione Servizi',
                                 margin: '10 0 0 0',
                                 handler: function(){
 
                                     Ext.widget("servizio_list",{
-                                        animateTarget: this.el
+                                        animateTarget: this.el,
+                                        record: Ext.StoreManager.lookup("C_impostazioni_generali").getAt(0)
                                     });
 
                                     Ext.StoreManager.lookup("S_servizio").load();

@@ -15,6 +15,14 @@ Ext.define('CL.view.home.V_home', {
     initComponent: function() {
         var this_view = this;
 
+        Ext.StoreManager.lookup("S_impostazioni_generali").load({
+            callback: function(){
+                var testo_home = this.getAt(0).get("testo_home");
+                Ext.ComponentQuery.query("home panel[name=testo_home]")[0].setHtml(testo_home);
+            }
+        })
+
+
         this_view.items = [
             {
                 xtype: 'panel',
@@ -52,6 +60,15 @@ Ext.define('CL.view.home.V_home', {
                         },
                         items: [
                             {
+                                xtype: 'panel',
+                                html: "<div style=\"text-align: center;color: #3993D4; font-size: 16px; font-weight: bold\">Per essere inserito nell’elenco dei professionisti per attività di collaborazione con<br> la Soprintendenza Speciale per il Colosseo, il MNR e l'Area Archeologica<br> di Roma occorre seguire i seguenti passi:",
+                                name: 'testo_home',
+                                bodyStyle: 'background: transparent;',
+                                width: '75%'
+                            },
+
+                            /*
+                            {
                                 html: "<div style=\"text-align: center;color: #3993D4; font-size: 16px; font-weight: bold\">Per essere inserito nell’elenco dei professionisti per attività di collaborazione con<br> la Soprintendenza Speciale per il Colosseo, il MNR e l'Area Archeologica<br> di Roma occorre seguire i seguenti passi:",
                                 bodyStyle: 'background: transparent;',
                                 width: '100%'
@@ -61,6 +78,7 @@ Ext.define('CL.view.home.V_home', {
                                 bodyStyle: 'background: transparent;',
                                 width: '70%'
                             },
+                            */
                             {
                                 html: '<a href="#signup" style="color: #08c; font-size: 22px; font-weight: bold;">Procedura di registrazione - Individuale</a>',
                                 bodyStyle: 'background: transparent;',

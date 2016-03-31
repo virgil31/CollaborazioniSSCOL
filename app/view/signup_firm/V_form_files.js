@@ -205,10 +205,9 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                                                     location.reload();
                                                                 });
 
-
                                                             },
                                                             failure: function(){
-                                                                alert("BAD");
+                                                                Ext.Msg.alert("Errore","Impossibile completare la registrazione. Si prega di ritentare più tardi.");
                                                             }
                                                         });
                                                     }
