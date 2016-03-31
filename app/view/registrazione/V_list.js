@@ -16,8 +16,8 @@ Ext.define('CL.view.registrazione.V_list', {
     modal: true,
     constrain: true,
 
-    width: 460,
-    height: 400,
+    width: 960,
+    height: 600,
 
     title: 'Gestione Registrazioni',
 
@@ -52,9 +52,15 @@ Ext.define('CL.view.registrazione.V_list', {
 
                 columns: [
                     {
-                        text: 'Tipo',
+                        //text: 'Tipo',
                         dataIndex: 'tipo',
-                        flex: 0.3
+                        flex: 0.1,
+                        renderer: function(value){
+                            if(value == 'individuale')
+                                return '<img src="resources/images/icon_user.png" alt=" " height="16" width="16">';
+                            else
+                                return '<img src="resources/images/icon_firm.png" alt=" " height="16" width="16">';
+                        }
                     },
                     {
                         text: 'Nome',
@@ -62,15 +68,38 @@ Ext.define('CL.view.registrazione.V_list', {
                         flex: 2
                     },
                     {
+                        xtype: 'datecolumn',
+                        text: 'Registrata il',
+                        format:'d-m-Y',
+                        dataIndex: 'data_registrazione',
+                        flex: 2
+                    },
+                    {
                         xtype:'actioncolumn',
-                        width:50,
+                        width:80,
                         items: [
                             {
-                                iconCls: 'x-fa fa-edit',
-                                tooltip: 'Modifica',
+                                iconCls: 'x-fa fa-search',
+                                tooltip: 'Informazioni',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                }
+                            },
+                            {
+                                iconCls: 'x-fa fa-file',
+                                tooltip: 'Documenti Allegati',
+                                handler: function(grid, rowIndex, colIndex) {
+                                    var rec = grid.getStore().getAt(rowIndex);
+                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                }
+                            },
+                            {
+                                iconCls: 'x-fa fa-eye',
+                                tooltip: 'Verdetto',
+                                handler: function(grid, rowIndex, colIndex) {
+                                    var rec = grid.getStore().getAt(rowIndex);
+                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
                                 }
                             }
                         ]

@@ -30,18 +30,23 @@ if(isset($_GET["flag_full"])){
 else{
 	$statement = $pdo->prepare("
 
+		SELECT *,COUNT(*) OVER() as total
+		FROM (
+			(
+				SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,
+					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva					
+				FROM registrazione_individuale A
+				WHERE confermata = 't'
+			)
+		    UNION
+		    (
+				SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,
+					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva
+				FROM registrazione_ditta A
 
-		(
-		SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid, COUNT(*) OVER() as total
-		FROM registrazione_individuale A
+			)
+		)tmp
 		WHERE confermata = 't'
-		)
-	    UNION
-	    (
-		SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid, COUNT(*) OVER() as total
-		FROM registrazione_ditta A
-		WHERE confermata = 't'
-		)
 
 		ORDER BY $pro $dir LIMIT $limit OFFSET $start
 	");

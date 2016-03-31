@@ -122,6 +122,7 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                 xtype: 'button',
                                 text: 'Gestione Registrazioni',
                                 margin: '10 0 0 0',
+                                style: 'background: green; border-color: transparent;',
                                 handler: function(){
                                     Ext.widget("registrazione_list",{
                                         animateTarget: this.el
