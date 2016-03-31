@@ -122,15 +122,13 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                 xtype: 'button',
                                 text: 'Gestione Registrazioni',
                                 margin: '10 0 0 0',
-                                disabled: true
-                                /*handler: function(){
-
-                                    Ext.widget("servizio_list",{
+                                handler: function(){
+                                    Ext.widget("registrazione_list",{
                                         animateTarget: this.el
                                     });
 
-                                    Ext.StoreManager.lookup("S_servizio").load();
-                                }*/
+                                    Ext.StoreManager.lookup("S_registrazione").loadPage(1);
+                                }
                             },
                             {xtype: 'menuseparator',width:'95%',margin: '10 0 0 0'},
                             {
