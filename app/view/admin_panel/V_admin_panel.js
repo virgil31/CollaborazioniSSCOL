@@ -112,8 +112,7 @@ Ext.define('CL.view.admin_panel.V_admin_panel', {
                                 handler: function(){
 
                                     Ext.widget("servizio_list",{
-                                        animateTarget: this.el,
-                                        record: Ext.StoreManager.lookup("C_impostazioni_generali").getAt(0)
+                                        animateTarget: this.el
                                     });
 
                                     Ext.StoreManager.lookup("S_servizio").load();
