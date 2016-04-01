@@ -16,8 +16,10 @@ Ext.define('CL.view.registrazione.V_list', {
     modal: true,
     constrain: true,
 
-    width: 960,
-    height: 600,
+    width: '100%',
+    height: '100%',
+    //width: 960,
+    //height: 600,
 
     title: 'Gestione Registrazioni',
 
@@ -125,7 +127,65 @@ Ext.define('CL.view.registrazione.V_list', {
                                 tooltip: 'Verdetto',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                    var targetEl = this.el;
+
+                                    if(rec.get("esito") == ""){
+                                        Ext.create('Ext.window.Window',{
+                                            autoShow: true,
+                                            animateTarget: targetEl,
+                                            modal: true,
+                                            constrain: true,
+                                            title: 'Esito - <b>'+rec.get('nome_grid')+'</b>',
+                                            padding: 10,
+                                            items:[
+                                                {
+                                                    xtype: 'label',
+                                                    html: '<br><b>ATTENZIONE!</b> Non sarà poi più possibile modificare tale campo!<br><br>'
+                                                }
+                                            ],
+                                            buttonAlign: 'center',
+                                            buttons:[
+                                                {
+                                                    text: 'Accetta',
+                                                    style: 'background: green; border-color: transparent;',
+                                                    handler: function(btn){
+                                                        Ext.Ajax.request({
+                                                            url: 'data/registrazione/edit_esito.php',
+                                                            params:{
+                                                                tipo: rec.get("tipo"),
+                                                                id: rec.get("id"),
+                                                                esito: 'accettata'
+                                                            },
+                                                            success: function(response, opts) {
+                                                                var obj = Ext.decode(response.responseText);
+                                                                btn.up("window").close();
+                                                            }
+                                                        });
+                                                    }
+                                                },
+                                                {
+                                                    text: 'Rifiuta',
+                                                    style: 'background: red; border-color: transparent;',
+                                                    handler: function(btn){
+                                                        Ext.Ajax.request({
+                                                            url: 'data/registrazione/edit_esito.php',
+                                                            params:{
+                                                                tipo: rec.get("tipo"),
+                                                                id: rec.get("id"),
+                                                                esito: 'rifiutata'
+                                                            },
+                                                            success: function(response, opts) {
+                                                                var obj = Ext.decode(response.responseText);
+                                                                btn.up("window").close();
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            ]
+                                        });
+                                    }
+                                    else
+                                        Ext.Msg.alert("Attenzione!","Impossibile modificare l'esito!");
                                 }
                             }
                         ]

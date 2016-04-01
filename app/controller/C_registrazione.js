@@ -281,17 +281,14 @@ Ext.define('CL.controller.C_registrazione', {
                     iconCls: 'x-fa fa-archive',
                     style: 'background: green; border-color: transparent;',
                     handler: function(){
-                        alert("TODO");
-                        /*
                         Ext.create('Ext.Component', {
                             renderTo: Ext.getBody(),
                             cls: 'x-hidden',
                             autoEl: {
                                 tag: 'iframe',
-                                src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_dichiarazione_sostitutiva")+'&file_name='+record_registrazione.get("nome_grid")+'-Dichiarazione_Sostitutiva'
+                                src: 'data/preview/download_zip.php?tipo='+record_registrazione.get("tipo")+'&registrazione_id='+record_registrazione.get("id")
                             }
                         });
-                        */
                     }
                 }
             ]

@@ -123,7 +123,7 @@ Ext.define('CL.view.signup.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'referenze_professionali',
-                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls / xlsx</i>)",
+                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls</i>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -134,17 +134,17 @@ Ext.define('CL.view.signup.V_form_files', {
                                                     var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                     fld.setRawValue(newValue);
 
-                                                    this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                                    this.fileInputEl.set({accept: '.xls'});
 
                                                     var extension = newValue.split('.').pop();
-                                                    if(extension != "xls" && extension != "xlsx"){
+                                                    if(extension != "xls"){
                                                         this.reset();
-                                                        this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                                        this.fileInputEl.set({accept: '.xls'});
                                                     }
                                                 }
                                             },
                                             afterrender: function(){
-                                                this.fileInputEl.set({accept: '.xls,.xlsx'});
+                                                this.fileInputEl.set({accept: '.xls'});
                                             }
                                         }
                                     },
