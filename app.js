@@ -35,7 +35,9 @@ Ext.application({
 
         'C_signup_firm',
         'C_impostazioni_generali',
-        'C_registrazione'
+        'C_registrazione',
+
+        'C_preview'
     ],
 
     // vv ROUTING

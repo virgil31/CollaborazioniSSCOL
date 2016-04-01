@@ -63,6 +63,17 @@ Ext.define('CL.view.registrazione.V_list', {
                         }
                     },
                     {
+                        text: 'ID',
+                        dataIndex: 'id',
+                        flex: 0.4,
+                        renderer: function(value, metaData, record){
+                            if(record.get("tipo")=="individuale")
+                                return value+"U";
+                            else
+                                return value+"D";
+                        }
+                    },
+                    {
                         text: 'Nome',
                         dataIndex: 'nome_grid',
                         flex: 2
@@ -73,6 +84,19 @@ Ext.define('CL.view.registrazione.V_list', {
                         format:'d-m-Y',
                         dataIndex: 'data_registrazione',
                         flex: 2
+                    },
+                    {
+                        text: 'Esito',
+                        dataIndex: 'esito',
+                        flex: 0.3,
+                        renderer: function(value){
+                            if(value == '')
+                                return '<img src="resources/images/icon_question.png" alt=" " height="16" width="16">';
+                            else if(value == 'accettata')
+                                return '<img src="resources/images/icon_confirmed.png" alt=" " height="16" width="16">';
+                            else
+                                return '<img src="resources/images/icon_cancelled.png" alt=" " height="16" width="16">';
+                        }
                     },
                     {
                         xtype:'actioncolumn',
@@ -91,7 +115,9 @@ Ext.define('CL.view.registrazione.V_list', {
                                 tooltip: 'Documenti Allegati',
                                 handler: function(grid, rowIndex, colIndex) {
                                     var rec = grid.getStore().getAt(rowIndex);
-                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                    var targetEl = this.el;
+
+                                    CL.app.getController("C_registrazione").showMenuPreviewAndDownload(targetEl,rec);
                                 }
                             },
                             {

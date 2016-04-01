@@ -114,8 +114,189 @@ Ext.define('CL.controller.C_registrazione', {
         }
         else
             this.redirectTo('login');
-    }
+    },
 
+    showMenuPreviewAndDownload: function(targetEl,record_registrazione){
+        Ext.create("Ext.window.Window",{
+            autoShow: true,
+            animateTarget: targetEl,
+            modal: true,
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
+            title: 'Documenti <b>'+record_registrazione.get("nome_grid")+"</b>",
+            padding: 10,
+            width: 275,
+            defaults:{margin: '10 0 10 0'},
+            items:[
+                {
+                    xtype: 'panel',
+                    layout: 'hbox',
+                    width: '100%',
+                    flex: 1,
+                    items: [
+                        {
+                            xtype: 'label',
+                            text: 'Curriculum Vitae',
+                            margin: '5 20 0 0',
+                            width: 150
+                        },
+                        {
+                            xtype: 'button',
+                            iconCls: 'x-fa fa-search',
+                            tooltip: 'Anteprima',
+                            margin: '0 20 0 0',
+                            handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,record_registrazione.get("url_curriculum"));}
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Scarica',
+                            iconCls: 'x-fa fa-download',
+                            handler: function(){
+                                Ext.create('Ext.Component', {
+                                    renderTo: Ext.getBody(),
+                                    cls: 'x-hidden',
+                                    autoEl: {
+                                        tag: 'iframe',
+                                        src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_curriculum")+'&file_name='+record_registrazione.get("nome_grid")+'-CV'
+                                    }
+                                });
+                            }
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    layout: 'hbox',
+                    width: '100%',
+                    flex: 1,
+                    items: [
+                        {
+                            xtype: 'label',
+                            text: "Documento d'Identità",
+                            margin: '5 20 0 0',
+                            width: 150
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Anteprima',
+                            iconCls: 'x-fa fa-search',
+                            margin: '0 20 0 0',
+                            handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,record_registrazione.get("url_documento_identita"));}
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Scarica',
+                            iconCls: 'x-fa fa-download',
+                            handler: function(){
+                                Ext.create('Ext.Component', {
+                                    renderTo: Ext.getBody(),
+                                    cls: 'x-hidden',
+                                    autoEl: {
+                                        tag: 'iframe',
+                                        src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_documento_identita")+'&file_name='+record_registrazione.get("nome_grid")+'-Documento_Identita'
+                                    }
+                                });
+                            }
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    layout: 'hbox',
+                    width: '100%',
+                    flex: 1,
+                    items: [
+                        {
+                            xtype: 'label',
+                            text: 'Referenze Professionali',
+                            margin: '5 20 0 0',
+                            width: 150
+                        },
+                        {
+                            xtype: 'button',
+                            disabled: true,
+                            iconCls: 'x-fa fa-search',
+                            tooltip: 'Anteprima',
+                            margin: '0 20 0 0'//,
+                            //handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,rec.get("url_referenze_professionali"));}
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Scarica',
+                            iconCls: 'x-fa fa-download',
+                            handler: function(){
+                                Ext.create('Ext.Component', {
+                                    renderTo: Ext.getBody(),
+                                    cls: 'x-hidden',
+                                    autoEl: {
+                                        tag: 'iframe',
+                                        src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_referenze_professionali")+'&file_name='+record_registrazione.get("nome_grid")+'-Referenze_Professionali'
+                                    }
+                                });
+                            }
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    layout: 'hbox',
+                    width: '100%',
+                    flex: 1,
+                    items: [
+                        {
+                            xtype: 'label',
+                            text: 'Dichiarazione Sostitutiva',
+                            margin: '5 20 0 0',
+                            width: 150
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Anteprima',
+                            iconCls: 'x-fa fa-search',
+                            margin: '0 20 0 0',
+                            handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,record_registrazione.get("url_dichiarazione_sostitutiva"));}
+                        },
+                        {
+                            xtype: 'button',
+                            tooltip: 'Scarica',
+                            iconCls: 'x-fa fa-download',
+                            handler: function(){
+                                Ext.create('Ext.Component', {
+                                    renderTo: Ext.getBody(),
+                                    cls: 'x-hidden',
+                                    autoEl: {
+                                        tag: 'iframe',
+                                        src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_dichiarazione_sostitutiva")+'&file_name='+record_registrazione.get("nome_grid")+'-Dichiarazione_Sostitutiva'
+                                    }
+                                });
+                            }
+                        }
+                    ]
+                },
+                {
+                    xtype: 'button',
+                    text: 'Scarica Archivio ZIP',
+                    iconCls: 'x-fa fa-archive',
+                    style: 'background: green; border-color: transparent;',
+                    handler: function(){
+                        alert("TODO");
+                        /*
+                        Ext.create('Ext.Component', {
+                            renderTo: Ext.getBody(),
+                            cls: 'x-hidden',
+                            autoEl: {
+                                tag: 'iframe',
+                                src: 'data/preview/download_single.php?file_url='+record_registrazione.get("url_dichiarazione_sostitutiva")+'&file_name='+record_registrazione.get("nome_grid")+'-Dichiarazione_Sostitutiva'
+                            }
+                        });
+                        */
+                    }
+                }
+            ]
+        });
+    }
 
 
 });

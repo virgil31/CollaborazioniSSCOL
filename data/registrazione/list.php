@@ -33,14 +33,14 @@ else{
 		SELECT *,COUNT(*) OVER() as total
 		FROM (
 			(
-				SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,
-					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva					
+				SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,esito,
+					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva
 				FROM registrazione_individuale A
 				WHERE confermata = 't'
 			)
 		    UNION
 		    (
-				SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,
+				SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,esito,
 					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva
 				FROM registrazione_ditta A
 
