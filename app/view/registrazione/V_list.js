@@ -6,11 +6,7 @@ Ext.define('CL.view.registrazione.V_list', {
 
     bodyStyle: 'backgroundColor: transparent',  //per rendere il corpo invisibile
 
-    layout: {
-        type: 'hbox',
-        align: 'center',
-        pack: 'center'
-    },
+    layout: 'border',
 
     autoShow: true,
     modal: true,
@@ -29,6 +25,7 @@ Ext.define('CL.view.registrazione.V_list', {
         this_view.items = [
             {
                 xtype: 'grid',
+                region: 'center',
                 border: true,
                 store: 'S_registrazione',
                 height: '98%',
@@ -191,8 +188,20 @@ Ext.define('CL.view.registrazione.V_list', {
                         ]
                     }
                 ]
+            },
+            //SOUTH/////////////////////////////////////////////////////////////////////
+            {
+                xtype: 'ricerca_bar',
+                region: 'south',
+                title: 'Ricerca e filtra',
+                collapsible: true,
+                collapsed: true,
+                titleCollapse: true,
+                maxHeight: 300,
+                height: 300
             }
         ];
+
 
         this.callParent(arguments);
 

@@ -2,6 +2,7 @@ Ext.define('CL.controller.C_home', {
     extend: 'Ext.app.Controller',
 
     routes: {
+        '' : 'showView',
         'home' : 'showView'
     },
 

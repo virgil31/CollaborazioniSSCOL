@@ -37,7 +37,9 @@ Ext.application({
         'C_impostazioni_generali',
         'C_registrazione',
 
-        'C_preview'
+        'C_preview',
+
+        'C_ricerca'
     ],
 
     // vv ROUTING

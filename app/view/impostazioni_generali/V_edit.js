@@ -44,7 +44,7 @@ Ext.define('CL.view.impostazioni_generali.V_edit', {
                         width: '100%',
                         allowBlank: false,
                         height: 400,
-                        //enableColors: false,
+                        enableColors: false,
                         enableFont: false
                         //enableFontSize: false
                     }
