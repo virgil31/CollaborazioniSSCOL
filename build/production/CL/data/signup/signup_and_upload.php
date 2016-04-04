@@ -77,13 +77,14 @@ $registrazione_individuale_id = $pdo->lastInsertId("registrazione_individuale_id
 //NaN con i servizi
 foreach ($data["servizi_selezionati"] as $servizio_selezionato) {
     $s = $pdo->prepare("
-    	INSERT INTO registrazione_individuale_servizio(registrazione_individuale_id,servizio_id)
-    	VALUES(:registrazione_individuale_id,:servizio_id)
+    	INSERT INTO registrazione_individuale_servizio(registrazione_individuale_id,servizio_id,anni_esperienza)
+    	VALUES(:registrazione_individuale_id,:servizio_id,:anni_esperienza)
     ");
 
     $params = array(
     	'registrazione_individuale_id' => $registrazione_individuale_id,
-    	'servizio_id' => $servizio_selezionato["id"]
+    	'servizio_id' => $servizio_selezionato["id"],
+    	'anni_esperienza' => $servizio_selezionato["anni_esperienza"]
     );
 
     $success = $s->execute($params);

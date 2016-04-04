@@ -45,7 +45,10 @@ Ext.define('CL.view.registrazione.V_list', {
 
                 listeners: {
                     itemdblclick: function( grid, record, item, index, e, eOpts ){
-                        CL.app.getController("C_registrazione").onEdit(item,record);
+                        if(record.get("tipo") == "ditta")
+                            CL.app.getController("C_signup_firm").onEdit(this.el,record);
+                        else
+                            CL.app.getController("C_signup").onEdit(this.el,record);
                     }
                 },
 
@@ -105,8 +108,11 @@ Ext.define('CL.view.registrazione.V_list', {
                                 iconCls: 'x-fa fa-search',
                                 tooltip: 'Informazioni',
                                 handler: function(grid, rowIndex, colIndex) {
-                                    var rec = grid.getStore().getAt(rowIndex);
-                                    //CL.app.getController("C_registrazione").onEdit(this.el,rec);
+                                    var record = grid.getStore().getAt(rowIndex);
+                                    if(record.get("tipo") == "ditta")
+                                        CL.app.getController("C_signup_firm").onEdit(this.el,record);
+                                    else
+                                        CL.app.getController("C_signup").onEdit(this.el,record);
                                 }
                             },
                             {

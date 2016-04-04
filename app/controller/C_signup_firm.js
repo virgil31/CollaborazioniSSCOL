@@ -17,7 +17,9 @@ Ext.define('CL.controller.C_signup_firm', {
     views: [
         'signup_firm.V_form',
         'signup_firm.V_form_profilo',
-        'signup_firm.V_form_files'
+        'signup_firm.V_form_files',
+
+        'signup_firm.V_edit'
     ],
 
     /////////////////////////////////////////////////
@@ -84,8 +86,24 @@ Ext.define('CL.controller.C_signup_firm', {
 
         Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('signup_firm_form_files_id');
 
-    }
+    },
 
+
+    //ON EDIT
+    onEdit: function(animateTargetEl,record){
+        var win = Ext.widget("signup_firm_edit",{
+            animateTarget: animateTargetEl,
+            title: 'Scheda Registrazione <b>'+record.get("nome_grid")+'</b>'
+        });
+
+        win.down("form").loadRecord(record);
+
+        record.get("servizi").forEach(function(servizio){
+            Ext.ComponentQuery.query("signup_firm_edit grid[name=servizi]")[0].getStore().add(servizio);
+        });
+        
+        console.log(record.data);
+    }
 
 
 });
