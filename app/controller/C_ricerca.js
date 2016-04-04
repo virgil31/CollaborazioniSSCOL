@@ -16,7 +16,7 @@ Ext.define('CL.controller.C_ricerca', {
         this.control({
 
         }, this);
-    },
+    }
     /////////////////////////////////////////////////
 
 

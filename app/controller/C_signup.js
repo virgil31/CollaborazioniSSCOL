@@ -18,7 +18,9 @@ Ext.define('CL.controller.C_signup', {
         'signup.V_form',
         'signup.V_form_profilo',
         'signup.V_form_titoli',
-        'signup.V_form_files'
+        'signup.V_form_files',
+
+        'signup.V_edit'
     ],
 
     /////////////////////////////////////////////////
@@ -128,6 +130,22 @@ Ext.define('CL.controller.C_signup', {
             Ext.ComponentQuery.query('viewport panel[name=card]')[0].add({xtype: 'signup_form_files'});
 
         Ext.ComponentQuery.query('viewport panel[name=card]')[0].getLayout().setActiveItem('signup_form_files_id');
+    },
+
+    //ON EDIT
+    onEdit: function(animateTargetEl,record){
+
+        var win = Ext.widget("signup_edit",{
+            animateTarget: animateTargetEl,
+            title: 'Scheda Registrazione - <b>'+record.get("nome_grid")+'</b>'
+        });
+
+        win.down("form").loadRecord(record);
+
+        record.get("servizi").forEach(function(servizio){
+            Ext.ComponentQuery.query("signup_edit grid[name=servizi]")[0].getStore().add(servizio);
+        });
+
     }
 
 

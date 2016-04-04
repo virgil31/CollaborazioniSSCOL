@@ -93,7 +93,7 @@ Ext.define('CL.controller.C_signup_firm', {
     onEdit: function(animateTargetEl,record){
         var win = Ext.widget("signup_firm_edit",{
             animateTarget: animateTargetEl,
-            title: 'Scheda Registrazione <b>'+record.get("nome_grid")+'</b>'
+            title: 'Scheda Registrazione - <b>'+record.get("nome_grid")+'</b>'
         });
 
         win.down("form").loadRecord(record);
@@ -101,8 +101,6 @@ Ext.define('CL.controller.C_signup_firm', {
         record.get("servizi").forEach(function(servizio){
             Ext.ComponentQuery.query("signup_firm_edit grid[name=servizi]")[0].getStore().add(servizio);
         });
-        
-        console.log(record.data);
     }
 
 

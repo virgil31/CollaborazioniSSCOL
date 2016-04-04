@@ -1,8 +1,8 @@
-Ext.define('CL.view.signup_firm.V_edit', {
+Ext.define('CL.view.signup.V_edit', {
     extend: 'Ext.window.Window',
-    xtype: 'signup_firm_edit',
-    itemId: 'signup_firm_edit_id',
-    alias: 'widget.signup_firm_edit',
+    xtype: 'signup_edit',
+    itemId: 'signup_edit_id',
+    alias: 'widget.signup_edit',
 
     autoShow: true,
     modal: true,
@@ -12,7 +12,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
 
     title: 'Scheda Registrazione',
 
-    height: 600,
+    height: 620,
     width: 820,
 
     layout: 'fit',
@@ -32,7 +32,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
                 items: [
 
                     {
-                        title: 'Profilo',
+                        title: '<b>Profilo</b>',
                         layout: 'vbox',
                         defaults:{
                             labelWidth: 200,
@@ -42,7 +42,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
                             {
                                 xtype: 'fieldset',
                                 collapsible: false,
-                                title: '<b>Rappresentante (Persona Fisica)</b>',
+                                title: '<b>Dati Anagrafici</b>',
                                 width: '100%',
                                 layout: {
                                     type: 'vbox',
@@ -67,20 +67,26 @@ Ext.define('CL.view.signup_firm.V_edit', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'email',
-                                        fieldLabel: 'Email'
+                                        name: 'cittadinanza',
+                                        fieldLabel: 'Cittadinanza'
+                                    },
+                                    {
+                                        xtype: 'datefield',
+                                        format: 'd-m-Y',
+                                        name: 'data_nascita',
+                                        fieldLabel: 'Data di Nascita'
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'codice_fiscale',
-                                        fieldLabel: 'Codice Fiscale'
+                                        name: 'stato_nascita',
+                                        fieldLabel: 'Stato di Nascita'
                                     }
                                 ]
                             },
                             {
                                 xtype: 'fieldset',
                                 collapsible: false,
-                                title: '<b>Studio / Associazione</b>',
+                                title: '<b>Residenza</b>',
                                 width: '100%',
                                 layout: {
                                     type: 'vbox',
@@ -95,13 +101,8 @@ Ext.define('CL.view.signup_firm.V_edit', {
                                 items: [
                                     {
                                         xtype: 'textfield',
-                                        name: 'nome_ditta',
-                                        fieldLabel: 'Denominazione'
-                                    },
-                                    {
-                                        xtype: 'textfield',
                                         name: 'indirizzo',
-                                        fieldLabel: 'Indirizzo'
+                                        fieldLabel: 'indirizzo'
                                     },
                                     {
                                         xtype: 'textfield',
@@ -110,13 +111,13 @@ Ext.define('CL.view.signup_firm.V_edit', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'stato_sede_legale',
-                                        fieldLabel: 'Stato Sede Legale'
+                                        name: 'stato_residenza',
+                                        fieldLabel: 'Stato di Residenza'
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'citta_sede_legale',
-                                        fieldLabel: 'Città Sede Legale'
+                                        name: 'citta_residenza',
+                                        fieldLabel: 'Città di Residenza'
                                     }
                                 ]
                             },
@@ -138,7 +139,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
                                 items: [
                                     {
                                         xtype: 'textfield',
-                                        name: 'email_ditta',
+                                        name: 'email',
                                         fieldLabel: 'Email'
                                     },
                                     {
@@ -153,13 +154,13 @@ Ext.define('CL.view.signup_firm.V_edit', {
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'partita_iva',
-                                        fieldLabel: 'Partita IVA'
+                                        name: 'codice_fiscale',
+                                        fieldLabel: 'Codice Fiscale'
                                     },
                                     {
                                         xtype: 'textfield',
-                                        name: 'codice_fiscale',
-                                        fieldLabel: 'Codice Fiscale'
+                                        name: 'partita_iva',
+                                        fieldLabel: 'Partita IVA'
                                     }
                                 ]
                             }
@@ -167,7 +168,56 @@ Ext.define('CL.view.signup_firm.V_edit', {
                     },
 
                     {
-                        title: 'Servizi',
+                        title: '<b>Titoli</b>',
+                        width: '100%',
+                        layout: {
+                            type: 'vbox',
+                            align: 'center'
+                        },
+                        defaults:{
+                            width: '90%',
+                            labelWidth: 150,
+                            readOnly: true,
+                            margin: '10 0 10 0'
+                        },
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                name: 'diplomi',
+                                fieldLabel: 'Diplomi'
+                            },
+                            {
+                                xtype: 'textfield',
+                                name: 'laurea',
+                                fieldLabel: 'Laurea'
+                            },
+                            {
+                                xtype: 'textfield',
+                                name: 'specializzazione',
+                                fieldLabel: 'Specializzazione'
+                            },
+                            {
+                                xtype: 'textfield',
+                                name: 'albo',
+                                fieldLabel: 'Albo'
+                            },
+                            {
+                                xtype: 'textfield',
+                                name: 'numero_albo',
+                                fieldLabel: 'Numero Albo'
+                            },
+                            {
+                                xtype: 'datefield',
+                                format: 'd-m-Y',
+                                name: 'data_albo',
+                                fieldLabel: "Data Iscrizione",
+                                margin: '0 0 10 0'
+                            }
+                        ]
+                    },
+
+                    {
+                        title: '<b>Servizi</b>',
                         layout: 'fit',
                         items: [
                             {
