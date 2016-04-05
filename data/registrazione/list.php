@@ -35,11 +35,14 @@ else{
 		$esito = $query_params->esito;
 		$tipo = $query_params->tipo;
 		$nome = $query_params->nome;
-		$email = $query_params->email;						//
-		$pec = $query_params->pec;							//
-		$telefono = $query_params->telefono;				//
-		$codice_fiscale = $query_params->codice_fiscale;	//
-		$partita_iva = $query_params->partita_iva;			//
+		$email = $query_params->email;
+		$pec = $query_params->pec;
+		$telefono = $query_params->telefono;
+		$codice_fiscale = $query_params->codice_fiscale;
+		$partita_iva = $query_params->partita_iva;
+
+		$servizio_id = $query_params->servizio_id;
+		$anni_esperienza = $query_params->anni_esperienza;
 
 		$statement = $pdo->prepare("
 
@@ -57,6 +60,8 @@ else{
 						albo, numero_albo, data_albo
 
 					FROM registrazione_individuale A
+						".(($servizio_id == "") ? " " : " RIGHT JOIN registrazione_individuale_servizio B ON (B.registrazione_individuale_id = A.id AND B.servizio_id = $servizio_id ".(($anni_esperienza == "")? " ": " AND B.anni_esperienza like '$anni_esperienza' ").") ")."
+
 					WHERE confermata = 't'
 					".(($esito == "tutti") ? " " : (($esito == "") ? " AND esito IS NULL ": " AND esito like '$esito' "))."
 					".(($tipo == "tutti") ? " " : " AND 'individuale' like '$tipo'")."
@@ -81,6 +86,8 @@ else{
 
 
 					FROM registrazione_ditta A
+						".(($servizio_id == "") ? " " : " RIGHT JOIN registrazione_ditta_servizio B ON (B.registrazione_ditta_id = A.id AND B.servizio_id = $servizio_id ".(($anni_esperienza == "")? " ": " AND B.anni_esperienza like '$anni_esperienza' ").") ")."
+
 					WHERE confermata = 't'
 					".(($esito == "tutti") ? " " : (($esito == "") ? " AND esito IS NULL ": " AND esito like '$esito' "))."
 					".(($tipo == "tutti") ? " " : " AND 'ditta' like '$tipo'")."

@@ -180,6 +180,7 @@ Ext.define('CL.view.registrazione.V_list', {
                                                             success: function(response, opts) {
                                                                 var obj = Ext.decode(response.responseText);
                                                                 btn.up("window").close();
+                                                                Ext.StoreManager.lookup("S_registrazione").reload();
                                                             }
                                                         });
                                                     }
@@ -203,8 +204,8 @@ Ext.define('CL.view.registrazione.V_list', {
                 collapsible: true,
                 collapsed: true,
                 titleCollapse: true,
-                maxHeight: 300,
-                height: 300
+                maxHeight: 400,
+                height: 400
             }
         ];
 

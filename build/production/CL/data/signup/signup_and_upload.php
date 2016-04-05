@@ -20,7 +20,7 @@ $s = $pdo->prepare("
 
         tipo_laurea,nome_laurea,tipo_specializzazione,nome_specializzazione,albo,numero_albo, ". (($data['data_albo']!="") ? ":data_albo," : "") ."
 
-		unique_seed
+		unique_seed, cittadinanza
     )
 	VALUES(
         :nome,:cognome,:data_nascita,:stato_nascita,:citta_nascita,
@@ -33,7 +33,7 @@ $s = $pdo->prepare("
 
         :tipo_laurea, :nome_laurea, :tipo_specializzazione, :nome_specializzazione, :albo, :numero_albo, ". (($data['data_albo']!="") ? ":data_albo," : "") ."
 
-		:unique_seed
+		:unique_seed, :cittadinanza
     )
 ");
 
@@ -63,7 +63,9 @@ $params = array(
 	'numero_albo' => $data['numero_albo'],
 	//'data_albo' => $data['data_albo'],
 
-	'unique_seed' => $unique_seed
+	'unique_seed' => $unique_seed,
+
+	'cittadinanza' => $data["cittadinanza"]
 );
 
 if($data["data_albo"]!="") array_push($params,$data["data_albo"]);

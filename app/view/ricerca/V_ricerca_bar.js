@@ -155,6 +155,64 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                     }
                 ]
             },
+            {
+                xtype: 'panel',
+                layout: 'hbox',
+                bodyStyle: 'background: transparent',
+                defaults: {
+                    margin: '0 10 0 10',
+                    labelAlign: 'top',
+                    labelWidth: 150,
+                    listeners: {
+                        specialkey: function(field, e){
+                            if (e.getKey() == e.ENTER){
+                                var btn = Ext.ComponentQuery.query('ricerca_bar button[action=do_search]')[0];
+                                btn.fireEvent('click',btn);
+                            }
+                        }
+                    }
+                },
+                items:[
+                    {
+                        xtype: 'combobox',
+                        name: 'servizio_id',
+                        labelAlign: 'top',
+                        fieldLabel: 'Servizio',
+                        width: 500,
+                        forceSelection: true,
+                        queryMode: 'local',
+                        displayField: 'nome',
+                        valueField: 'id',
+                        store: 'S_servizio',
+                        validator: function (val) {
+                            if(val.length == 0) this.reset();
+                            return true;
+                        }
+                    },
+                    {
+                        xtype: 'combobox',
+                        name: 'anni_esperienza',
+                        labelAlign: 'top',
+                        fieldLabel: 'Anni Esperienza',
+                        forceSelection: true,
+                        queryMode: 'local',
+                        displayField: 'name',
+                        valueField: 'name',
+                        store: {
+                            data:[
+                                {"value":1, "name":"Meno di 2"},
+                                {"value":2, "name":"2 - 5"},
+                                {"value":3, "name":"5 - 10"},
+                                {"value":4, "name":"Più di 10"}
+                            ]
+                        },
+                        validator: function (val) {
+                            if(val.length == 0) this.reset();
+                            return true;
+                        }
+                    }
+                ]
+            },
 
             {
                 xtype: 'panel',

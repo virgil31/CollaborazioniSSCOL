@@ -281,7 +281,28 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
                                                 flex: 1,
-                                                allowBlank: false
+                                                allowBlank: false,
+                                                listeners:{
+                                                    change: function(field,value){
+                                                        Ext.Ajax.request({
+                                                            url: 'data/registrazione/checkDuplicatoPartitaIVA.php',
+                                                            params:{
+                                                                partita_iva: value
+                                                            },
+                                                            success: function(response) {
+                                                                var risposta = Ext.JSON.decode(response.responseText);
+                                                                //è un duplicato
+                                                                if(risposta["result"]){
+                                                                    field.markInvalid("E' già presente una registrazione legata a questa Partita IVA");
+                                                                }
+                                                                //non è un duplicato
+                                                                else{
+                                                                    field.clearInvalid();
+                                                                }
+                                                            }
+                                                        });
+                                                    }
+                                                }
                                             },
                                             {
                                                 xtype: 'textfield',

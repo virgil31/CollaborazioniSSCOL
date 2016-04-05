@@ -73,6 +73,25 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                         },
                                         items:[
                                             {
+                                                xtype: 'combobox',
+                                                name: 'sesso',
+                                                fieldLabel: 'Sesso',
+                                                value: 'maschile',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                editable: false,
+                                                flex: 0.4,
+                                                store: Ext.create('Ext.data.Store', {
+                                                    fields: ['value', 'label'],
+                                                    data : [
+                                                        {"value":"m",        "label":"Maschile"},
+                                                        {"value":"f",       "label":"Femminile"}
+                                                    ]
+                                                }),
+                                                valueField: 'value',
+                                                displayField: 'label'
+                                            },
+                                            {
                                                 xtype: 'textfield',
                                                 name: 'nome',
                                                 fieldLabel: 'Nome *',
@@ -298,7 +317,48 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 allowBlank: false,
                                                 flex: 1,
                                                 minLength: 16,
-                                                maxLength: 16
+                                                maxLength: 16,
+                                                listeners:{
+                                                    change: function(field,value){
+                                                        Ext.Ajax.request({
+                                                            url: 'data/registrazione/codice_fiscale/generaCodiceFiscale.php',
+                                                            params:{
+                                                                cognome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=cognome]")[0].getValue(),
+                                                                nome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=nome]")[0].getValue()
+                                                            },
+                                                            success: function(response) {
+                                                                var risposta = Ext.JSON.decode(response.responseText);
+                                                                //è un duplicato
+                                                                if(risposta["result"]){
+                                                                    field.markInvalid("E' già presente una registrazione legata a questo Codice Fiscale");
+                                                                }
+                                                                //non è un duplicato
+                                                                else{
+                                                                    field.clearInvalid();
+                                                                }
+                                                            }
+                                                        });
+                                                        /*
+                                                        Ext.Ajax.request({
+                                                            url: 'data/registrazione/checkDuplicatoCodiceFiscale.php',
+                                                            params:{
+                                                                codice_fiscale: value
+                                                            },
+                                                            success: function(response) {
+                                                                var risposta = Ext.JSON.decode(response.responseText);
+                                                                //è un duplicato
+                                                                if(risposta["result"]){
+                                                                    field.markInvalid("E' già presente una registrazione legata a questo Codice Fiscale");
+                                                                }
+                                                                //non è un duplicato
+                                                                else{
+                                                                    field.clearInvalid();
+                                                                }
+                                                            }
+                                                        });
+                                                        */
+                                                    }
+                                                }
                                             },
                                             {
                                                 xtype: 'textfield',
