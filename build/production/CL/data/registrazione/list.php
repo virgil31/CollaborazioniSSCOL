@@ -28,45 +28,117 @@ if(isset($_GET["flag_full"])){
 }
 //LIST PAGINATO
 else{
-	$statement = $pdo->prepare("
+	//con filtri
+	if(isset($_GET["query_params"])){
+		$query_params = json_decode($_GET["query_params"]);
 
-		SELECT *,COUNT(*) OVER() as total
-		FROM (
-			(
-				SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,esito,
-					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+		$esito = $query_params->esito;
+		$tipo = $query_params->tipo;
+		$nome = $query_params->nome;
+		$email = $query_params->email;						//
+		$pec = $query_params->pec;							//
+		$telefono = $query_params->telefono;				//
+		$codice_fiscale = $query_params->codice_fiscale;	//
+		$partita_iva = $query_params->partita_iva;			//
 
-					nome, cognome, email, codice_fiscale, '' as nome_ditta, indirizzo, cap, '' as stato_sede_legale, '' as citta_sede_legale,
-					'' as email_ditta, pec, telefono, partita_iva, '' as codice_fiscale_ditta, unique_seed,
+		$statement = $pdo->prepare("
 
-					cittadinanza, data_nascita, stato_nascita, stato_residenza, citta_residenza,
-					CONCAT(tipo_laurea,' - ',nome_laurea) as laurea, CONCAT(tipo_specializzazione,' - ',nome_specializzazione) as specializzazione,
-					albo, numero_albo, data_albo
+			SELECT *,COUNT(*) OVER() as total
+			FROM (
+				(
+					SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,esito,
+						url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
 
-				FROM registrazione_individuale A
-				WHERE confermata = 't'
-			)
-		    UNION
-		    (
-				SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,esito,
-					url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+						nome, cognome, email, codice_fiscale, '' as nome_ditta, indirizzo, cap, '' as stato_sede_legale, '' as citta_sede_legale,
+						'' as email_ditta, pec, telefono, partita_iva, '' as codice_fiscale_ditta, unique_seed,
 
-					nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
-					email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed,
+						cittadinanza, data_nascita, stato_nascita, stato_residenza, citta_residenza,
+						CONCAT(tipo_laurea,' - ',nome_laurea) as laurea, CONCAT(tipo_specializzazione,' - ',nome_specializzazione) as specializzazione,
+						albo, numero_albo, data_albo
 
-					'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as stato_residenza, '' as citta_residenza,
-					'' as laurea,'' as specializzazione,
-					'' as albo, '' as numero_albo, 'now()' as data_albo
+					FROM registrazione_individuale A
+					WHERE confermata = 't'
+					".(($esito == "tutti") ? " " : (($esito == "") ? " AND esito IS NULL ": " AND esito like '$esito' "))."
+					".(($tipo == "tutti") ? " " : " AND 'individuale' like '$tipo'")."
+					".(($nome == "") ? " ": " AND CONCAT(A.nome,' ',A.cognome) ilike '%$nome%' ")."
+					".(($email == "") ? " ": " AND email ilike '%$email%' ")."
+					".(($pec == "") ? " ": " AND pec ilike '%$pec%' ")."
+					".(($telefono == "") ? " ": " AND telefono ilike '%$telefono%' ")."
+					".(($codice_fiscale == "") ? " ": " AND telefono ilike '%$codice_fiscale%' ")."
+					".(($partita_iva == "") ? " ": " AND partita_iva ilike '%$partita_iva%' ")."
+				)
+			    UNION
+			    (
+					SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,esito,
+						url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+
+						nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
+						email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed,
+
+						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as stato_residenza, '' as citta_residenza,
+						'' as laurea,'' as specializzazione,
+						'' as albo, '' as numero_albo, 'now()' as data_albo
 
 
-				FROM registrazione_ditta A
-				WHERE confermata = 't'
-			)
-		)tmp
-		WHERE confermata = 't'
+					FROM registrazione_ditta A
+					WHERE confermata = 't'
+					".(($esito == "tutti") ? " " : (($esito == "") ? " AND esito IS NULL ": " AND esito like '$esito' "))."
+					".(($tipo == "tutti") ? " " : " AND 'ditta' like '$tipo'")."
+					".(($nome == "") ? " ": " AND nome_ditta ilike '%$nome%' ")."
+					".(($email == "") ? " ": " AND (email ilike '%$email%' OR email_ditta ilike '%$email%')")."
+					".(($pec == "") ? " ": " AND pec ilike '%$pec%' ")."
+					".(($telefono == "") ? " ": " AND telefono ilike '%$telefono%' ")."
+					".(($codice_fiscale == "") ? " ": " AND (codice_fiscale ilike '%$codice_fiscale%' OR codice_fiscale_ditta ilike '%$codice_fiscale%')")."
+					".(($partita_iva == "") ? " ": " AND partita_iva ilike '%$partita_iva%' ")."
+				)
+			)tmp
+			WHERE confermata = 't'
 
-		ORDER BY $pro $dir LIMIT $limit OFFSET $start
-	");
+			ORDER BY $pro $dir LIMIT $limit OFFSET $start
+		");
+	}
+	//senza filtri
+	else{
+		$statement = $pdo->prepare("
+
+			SELECT *,COUNT(*) OVER() as total
+			FROM (
+				(
+					SELECT A.id,'individuale' as tipo,CONCAT(A.nome,' ',A.cognome) as nome_grid,data_registrazione,confermata,esito,
+						url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+
+						nome, cognome, email, codice_fiscale, '' as nome_ditta, indirizzo, cap, '' as stato_sede_legale, '' as citta_sede_legale,
+						'' as email_ditta, pec, telefono, partita_iva, '' as codice_fiscale_ditta, unique_seed,
+
+						cittadinanza, data_nascita, stato_nascita, stato_residenza, citta_residenza,
+						CONCAT(tipo_laurea,' - ',nome_laurea) as laurea, CONCAT(tipo_specializzazione,' - ',nome_specializzazione) as specializzazione,
+						albo, numero_albo, data_albo
+
+					FROM registrazione_individuale A
+					WHERE confermata = 't'
+				)
+			    UNION
+			    (
+					SELECT A.id,'ditta' as tipo,A.nome_ditta as nome_grid,data_registrazione,confermata,esito,
+						url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+
+						nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
+						email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed,
+
+						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as stato_residenza, '' as citta_residenza,
+						'' as laurea,'' as specializzazione,
+						'' as albo, '' as numero_albo, 'now()' as data_albo
+
+
+					FROM registrazione_ditta A
+					WHERE confermata = 't'
+				)
+			)tmp
+			WHERE confermata = 't'
+
+			ORDER BY $pro $dir LIMIT $limit OFFSET $start
+		");
+	}
 }
 
 
@@ -87,8 +159,7 @@ foreach ($result as $row){
 
 echo json_encode(array(
 	"result" => $result,
-	"total" => $total,
-	"tmp" => getDiplomiFromRegistrazioneIndividuale(61)
+	"total" => $total
 ));
 
 

@@ -21,8 +21,13 @@ Ext.define('CL.controller.C_ricerca', {
     },
     /////////////////////////////////////////////////
 
-    doSearch: function(){
-        alert("todo");
+    doSearch: function(btn){
+        var form = btn.up("form").getForm(),
+            values = form.getValues();
+
+        var store = Ext.ComponentQuery.query("registrazione_list grid")[0].getStore();
+        store.proxy.extraParams.query_params = Ext.JSON.encode(values);
+        store.loadPage(1);
     }
 
 });

@@ -5,10 +5,10 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
     alias: 'widget.ricerca_bar',
 
     collapsedCls: 'my-collapsed-panel',
-    bodyStyle: 'background: #FFEEDA',
+    bodyStyle: 'background: #EFF6FB',
 
     header: {
-        style: 'background: #D5DEFF;'
+        style: 'background: #EFF6FB;'
     },
 
     width: '100%',
@@ -35,7 +35,8 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                 layout: 'hbox',
                 bodyStyle: 'background: transparent',
                 defaults: {
-                    labelAlign: 'right',
+                    margin: '0 10 0 10',
+                    labelAlign: 'top',
                     labelWidth: 150,
                     listeners: {
                         specialkey: function(field, e){
@@ -50,12 +51,37 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                     {
                         xtype: 'combobox',
                         name: 'esito',
-                        fieldLabel: 'Esito'
+                        fieldLabel: 'Esito',
+                        value: 'tutti',
+                        editable: false,
+                        store: Ext.create('Ext.data.Store', {
+                            fields: ['value', 'label'],
+                            data : [
+                                {"value":"tutti",       "label":"Tutti"},
+                                {"value":"",            "label":"In attesa"},
+                                {"value":"accettata",   "label":"Confermate"},
+                                {"value":"rifiutata",   "label":"Rifiutate"}
+                            ]
+                        }),
+                        valueField: 'value',
+                        displayField: 'label'
                     },
                     {
                         xtype: 'combobox',
                         name: 'tipo',
-                        fieldLabel: 'Tipo'
+                        fieldLabel: 'Tipo',
+                        value: 'tutti',
+                        editable: false,
+                        store: Ext.create('Ext.data.Store', {
+                            fields: ['value', 'label'],
+                            data : [
+                                {"value":"tutti",           "label":"Tutti"},
+                                {"value":"ditta",           "label":"Ditte"},
+                                {"value":"individuale",     "label":"Persone"}
+                            ]
+                        }),
+                        valueField: 'value',
+                        displayField: 'label'
                     }
                 ]
             },
@@ -64,7 +90,8 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                 layout: 'hbox',
                 bodyStyle: 'background: transparent',
                 defaults: {
-                    labelAlign: 'right',
+                    margin: '0 10 0 10',
+                    labelAlign: 'top',
                     labelWidth: 150,
                     listeners: {
                         specialkey: function(field, e){
@@ -103,7 +130,8 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                 layout: 'hbox',
                 bodyStyle: 'background: transparent',
                 defaults: {
-                    labelAlign: 'right',
+                    margin: '0 10 0 10',
+                    labelAlign: 'top',
                     labelWidth: 150,
                     listeners: {
                         specialkey: function(field, e){
@@ -133,7 +161,8 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                 layout: 'hbox',
                 bodyStyle: 'background: transparent',
                 defaults: {
-                    labelAlign: 'right',
+                    margin: '0 10 0 10',
+                    labelAlign: 'top',
                     labelWidth: 150
                 },
                 items:[
@@ -141,8 +170,7 @@ Ext.define('CL.view.ricerca.V_ricerca_bar', {
                         xtype: 'button',
                         action: 'do_search',
                         iconCls: 'x-fa fa-search',
-                        text: 'Cerca',
-                        margin: '0 20 0 0'
+                        text: 'Cerca'
                     },
                     {
                         xtype: 'button',
