@@ -14,10 +14,15 @@ Ext.define('CL.controller.C_ricerca', {
     /////////////////////////////////////////////////
     init: function () {
         this.control({
-
+            'ricerca_bar button[action=do_search]':{
+                click: this.doSearch
+            }
         }, this);
-    }
+    },
     /////////////////////////////////////////////////
 
+    doSearch: function(){
+        alert("todo");
+    }
 
 });

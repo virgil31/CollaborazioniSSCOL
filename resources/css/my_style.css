@@ -26,3 +26,8 @@ max-width: calc(100% - 22px);
 .x-btn-icon-left > .x-btn-icon-el-plain-toolbar-small, .x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small {
     width: 14px;
 }
+
+
+.my-collapsed-panel {
+    background-color: #D5DEFF
+}

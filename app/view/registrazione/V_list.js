@@ -199,7 +199,7 @@ Ext.define('CL.view.registrazione.V_list', {
             {
                 xtype: 'ricerca_bar',
                 region: 'south',
-                title: 'Ricerca e filtra',
+                title: '<b>Ricerca e filtra</b>',
                 collapsible: true,
                 collapsed: true,
                 titleCollapse: true,
