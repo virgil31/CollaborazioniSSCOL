@@ -76,7 +76,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 xtype: 'combobox',
                                                 name: 'sesso',
                                                 fieldLabel: 'Sesso',
-                                                value: 'maschile',
+                                                value: 'Maschile',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
                                                 editable: false,
@@ -155,6 +155,7 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 allowBlank: false,
                                                 flex: 1
                                             },
+                                            /*
                                             {
                                                 xtype: 'textfield',
                                                 name: 'citta_nascita',
@@ -163,6 +164,33 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1
+                                            }*/
+                                            {
+                                                xtype: 'combobox',
+                                                store: 'S_comuni',
+                                                displayField: 'nome',
+                                                //valueField: 'codiceCatastale',
+                                                valueField: 'nome',
+                                                queryMode: 'local',
+                                                anyMatch: true,
+                                                forceSelection: true,
+                                                name: 'citta_nascita',
+                                                fieldLabel: 'Città di Nascita *',
+                                                labelSeparator : '',
+                                                labelAlign: 'top',
+                                                allowBlank: false,
+                                                flex: 1,
+                                                listeners: {
+                                                    select: function(combo, record){
+                                                        Ext.ComponentQuery.query("signup_form_profilo textfield[name=codice_comune]")[0].setValue(record.get("codiceCatastale"));
+                                                    }
+                                                }
+                                            },
+                                            //nascosto
+                                            {
+                                                xtype: 'textfield',
+                                                name: 'codice_comune',
+                                                hidden: true
                                             }
                                         ]
                                     }
@@ -316,47 +344,33 @@ Ext.define('CL.view.signup.V_form_profilo', {
                                                 labelAlign: 'top',
                                                 allowBlank: false,
                                                 flex: 1,
-                                                minLength: 16,
-                                                maxLength: 16,
-                                                listeners:{
-                                                    change: function(field,value){
+                                                //validateOnBlur: false,
+                                                //minLength: 16,
+                                                //maxLength: 16,
+                                                validator: function(value){
+                                                    var to_return;
+                                                    if(value.length != 16){
+                                                        to_return = "Il Codice Fiscale deve essere di 16 cifre";
+                                                    }
+                                                    else{
                                                         Ext.Ajax.request({
-                                                            url: 'data/registrazione/codice_fiscale/generaCodiceFiscale.php',
-                                                            params:{
-                                                                cognome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=cognome]")[0].getValue(),
-                                                                nome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=nome]")[0].getValue()
-                                                            },
-                                                            success: function(response) {
-                                                                var risposta = Ext.JSON.decode(response.responseText);
-                                                                //è un duplicato
-                                                                if(risposta["result"]){
-                                                                    field.markInvalid("E' già presente una registrazione legata a questo Codice Fiscale");
-                                                                }
-                                                                //non è un duplicato
-                                                                else{
-                                                                    field.clearInvalid();
-                                                                }
-                                                            }
-                                                        });
-                                                        /*
-                                                        Ext.Ajax.request({
+                                                            async: false,
                                                             url: 'data/registrazione/checkDuplicatoCodiceFiscale.php',
                                                             params:{
                                                                 codice_fiscale: value
                                                             },
                                                             success: function(response) {
                                                                 var risposta = Ext.JSON.decode(response.responseText);
-                                                                //è un duplicato
-                                                                if(risposta["result"]){
-                                                                    field.markInvalid("E' già presente una registrazione legata a questo Codice Fiscale");
-                                                                }
-                                                                //non è un duplicato
-                                                                else{
-                                                                    field.clearInvalid();
-                                                                }
+
+                                                                to_return = (risposta["result"]) ?  "E' già presente una registrazione legata a questo Codice Fiscale" : true ;
                                                             }
                                                         });
-                                                        */
+                                                    }
+                                                    return to_return;
+                                            	},
+                                                listeners:{
+                                                    change: function(field){
+                                                        field.setValue(field.getValue().toUpperCase());
                                                     }
                                                 }
                                             },
@@ -403,12 +417,45 @@ Ext.define('CL.view.signup.V_form_profilo', {
 
                                         //quando ho finito, salvo i servizi selezionati nel cookie "signup_profilo"
                                         handler: function(){
+                                            var this_button = this;
                                             if(this.up('form').isValid()){
-                                                var profilo_values = this.up("form").getValues();
 
-                                                Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+                                                Ext.Ajax.request({
+                                                    url: 'data/registrazione/codice_fiscale/generaCodiceFiscale.php',
+                                                    params:{
+                                                        cognome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=cognome]")[0].getValue(),
+                                                        nome: Ext.ComponentQuery.query("signup_form_profilo textfield[name=nome]")[0].getValue(),
 
-                                                CL.app.getController("C_signup").redirectTo("signup_titles");
+                                                        anno: (new Date(Ext.ComponentQuery.query("signup_form_profilo datefield[name=data_nascita]")[0].getValue())).getFullYear() ,
+                                                        mese: (new Date(Ext.ComponentQuery.query("signup_form_profilo datefield[name=data_nascita]")[0].getValue())).getMonth()+1 ,
+                                                        giorno: (new Date(Ext.ComponentQuery.query("signup_form_profilo datefield[name=data_nascita]")[0].getValue())).getDate() ,
+
+                                                        sesso: Ext.ComponentQuery.query("signup_form_profilo combobox[name=sesso]")[0].getValue(),
+                                                        codice_comune: Ext.ComponentQuery.query("signup_form_profilo textfield[name=codice_comune]")[0].getValue()
+                                                    },
+                                                    success: function(response) {
+                                                        var risposta = Ext.JSON.decode(response.responseText);
+                                                        //è un duplicato
+                                                        if(risposta["codice_fiscale"] != Ext.ComponentQuery.query("signup_form_profilo textfield[name=codice_fiscale]")[0].getValue()){
+                                                            Ext.Msg.confirm( "Attenzione!", "Il codice fiscale generato dal nostro tester partendo dai dati fiscali inseriti non corrisponde a quello dichiarato. Confermare ugualmente la validità dei dati?", function(btn_id){
+                                                                if(btn_id == 'yes'){
+                                                                    var profilo_values = this_button.up("form").getValues();
+
+                                                                    Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+
+                                                                    CL.app.getController("C_signup").redirectTo("signup_titles");
+                                                                }
+                                                            });
+                                                        }
+                                                        else{
+                                                            var profilo_values = this_button.up("form").getValues();
+
+                                                            Ext.util.Cookies.set("signup_profilo",Ext.JSON.encode(profilo_values));
+
+                                                            CL.app.getController("C_signup").redirectTo("signup_titles");
+                                                        }
+                                                    }
+                                                });
                                             }
                                         }
                                     }

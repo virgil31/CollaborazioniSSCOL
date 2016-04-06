@@ -1,18 +1,51 @@
 <?php
 
+$cognome=strtolower($_POST["cognome"]);
+$nome=strtolower($_POST["nome"]);
+$anno= "".$_POST["anno"];
+$mese= "".$_POST["mese"];
+if(count($mese) == 1)
+    $mese = "0".$mese;
+$giorno= "".$_POST["giorno"];
+if(count($giorno) == 1)
+    $giorno = $giorno;
+$sesso=$_POST["sesso"];
+$codcomune= $_POST["codice_comune"];
+
+/*
 $cognome="cerini";
 $nome="luca";
 //$data_nascita=$_POST["data_nascita"];
 
 $anno= "1992";
-$mese= "5";
+$mese= "05";
 $giorno= "12";
 $sesso="m";
 $codcomune= "H501"; //codice comune di roma
+*/
+
+/*
+$cognome="lena";
+$nome="fulvio";
+$anno= "1976";
+$mese= "02";
+$giorno= "02";
+$sesso="m";
+$codcomune= "F839"; //codice comune di napoli
+*/
+/*
+$cognome="cerini";
+$nome="dario";
+$anno= "1998";
+$mese= "04";
+$giorno= "12";
+$sesso="m";
+$codcomune= "H501"; //codice comune di napoli
+*/
 
 $vocali=array("a","e","i","o","u");
 $consonanti=array("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z");
-$mesi=array(1=>"A",2=>"B",3=>"C",4=>"D",5=>"E",6=>"F",7=>"G",8=>"H",9=>"I",10=>"J",11=>"K",12=>"L");
+$mesi=array("01"=>"A","02"=>"B","03"=>"C","04"=>"D","05"=>"E","06"=>"F","07"=>"G","08"=>"H","09"=>"I","10"=>"J","11"=>"K","12"=>"L");
 $lettere=array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
 
 $dispari=array(
@@ -54,6 +87,12 @@ $pre2="";
 // Prime 3 consonanti del cognome
 for($i=0;$i<strlen($cognome);$i++){
  if(in_array($cognome[$i],$consonanti) && $e<3){
+  $codice.=$cognome[$i];
+  $e++;
+ }
+}
+for($i=0;$i<strlen($cognome);$i++){
+ if(in_array($cognome[$i],$vocali) && $e<3){
   $codice.=$cognome[$i];
   $e++;
  }
@@ -120,5 +159,9 @@ for($i=0;$i<strlen($codice);$i++){
 // Al resto della divisione del codice corrisponde una lettera
 $codice.=$lettere[($pre2%26)];
 
-// Visualizza il codice fiscale
-echo strtoupper($codice);
+// Ritorno il codice fiscale
+echo json_encode(array(
+    "codice_fiscale" => strtoupper($codice),
+    "mese" => $mese,
+    "giorno" => $giorno
+));

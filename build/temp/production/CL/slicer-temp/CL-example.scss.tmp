@@ -29,6 +29,7 @@ $include-cl-model-m_ruolo: dynamic(true);;
 $include-cl-model-m_servizio: dynamic(true);;
 $include-cl-model-m_tipo_laurea: dynamic(true);;
 $include-cl-model-m_tipo_specializzazione: dynamic(true);;
+$include-cl-store-s_comuni: dynamic(true);;
 $include-cl-store-s_diploma: dynamic(true);;
 $include-cl-store-s_impostazioni_generali: dynamic(true);;
 $include-cl-store-s_nazioni: dynamic(true);;

@@ -9,7 +9,8 @@ Ext.application({
     ],
 
     stores:[
-        'S_nazioni' //JsonStore
+        'S_nazioni', //JsonStore
+        'S_comuni' //JsonStore
     ],
 
     controllers: [
