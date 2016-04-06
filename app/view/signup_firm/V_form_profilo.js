@@ -282,27 +282,23 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                                 labelAlign: 'top',
                                                 flex: 1,
                                                 allowBlank: false,
-                                                listeners:{
-                                                    change: function(field,value){
-                                                        Ext.Ajax.request({
-                                                            url: 'data/registrazione/checkDuplicatoPartitaIVA.php',
-                                                            params:{
-                                                                partita_iva: value
-                                                            },
-                                                            success: function(response) {
-                                                                var risposta = Ext.JSON.decode(response.responseText);
-                                                                //è un duplicato
-                                                                if(risposta["result"]){
-                                                                    field.markInvalid("E' già presente una registrazione legata a questa Partita IVA");
-                                                                }
-                                                                //non è un duplicato
-                                                                else{
-                                                                    field.clearInvalid();
-                                                                }
-                                                            }
-                                                        });
-                                                    }
-                                                }
+                                                validator: function(value){
+                                                    var to_return;
+
+                                                    Ext.Ajax.request({
+                                                        async: false,
+                                                        url: 'data/registrazione/checkDuplicatoPartitaIVA.php',
+                                                        params:{
+                                                            partita_iva: value
+                                                        },
+                                                        success: function(response) {
+                                                            var risposta = Ext.JSON.decode(response.responseText);
+                                                            to_return = (risposta["result"]) ?  "E' già presente una registrazione legata a questa Partita IVA" : true ;
+                                                        }
+                                                    });
+
+                                                    return to_return;
+                                            	}                                                
                                             },
                                             {
                                                 xtype: 'textfield',

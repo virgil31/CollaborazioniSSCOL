@@ -10,8 +10,10 @@ $pdo=new PDO("pgsql:host=".$ini_array['pdo_host'].";port=".$ini_array['pdo_port'
 $data = json_decode($_POST['data'],true);
 
 
+$tipo = $data["tipo"];
+
 $s = $pdo->prepare("
-	DELETE FROM registrazione
+	DELETE FROM registrazione_$tipo
 	WHERE id = :id
 ");
 

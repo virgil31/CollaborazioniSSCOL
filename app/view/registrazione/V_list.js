@@ -102,7 +102,7 @@ Ext.define('CL.view.registrazione.V_list', {
                     },
                     {
                         xtype:'actioncolumn',
-                        width:80,
+                        width:100,
                         items: [
                             {
                                 iconCls: 'x-fa fa-search',
@@ -190,6 +190,19 @@ Ext.define('CL.view.registrazione.V_list', {
                                     }
                                     else
                                         Ext.Msg.alert("Attenzione!","Impossibile modificare l'esito!");
+                                }
+                            },
+                            {
+                                iconCls: 'x-fa fa-trash',
+                                tooltip: 'Elimina Registrazione',
+                                handler: function(grid, rowIndex, colIndex) {
+                                    var rec = grid.getStore().getAt(rowIndex);
+
+                                    Ext.MessageBox.confirm('Attenzione', 'Eliminare una registrazione solo se in presenza di un <b>duplicato</b>! Sei sicuro di volerla eliminare?', function(btn_id){
+                                        if(btn_id == "yes")
+                                            Ext.StoreManager.lookup("S_registrazione").remove(rec);
+                                    });
+
                                 }
                             }
                         ]
