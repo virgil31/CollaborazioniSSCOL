@@ -86,7 +86,7 @@ if ($success) {
         "result" => array(
             "id" => $registrazione_ditta_id
         ),
-		"mail_inviata" => inviaMail("Collaborazioni-SSCOL@no-reply.com", $data['email'], "Conferma registrazione", getRiepilogo($registrazione_ditta_id).'<br><br>Si è pregati di confermare la registrazione cliccando su questo <a target="_blank" href="http://localhost/projects/Extjs_6.0.0/CollaborazioniSSCOL/#activate/d/'.$unique_seed.'">LINK</a>.',$url_da_allegare)
+		"mail_inviata" => inviaMail("Collaborazioni-SSCOL@no-reply.com", $data['email'], "Conferma registrazione", 'Si è pregati di confermare la registrazione cliccando su questo <a target="_blank" href="http://localhost/projects/Extjs_6.0.0/CollaborazioniSSCOL/#activate/d/'.$unique_seed.'">LINK</a>.<br><br>'.getRiepilogo($registrazione_ditta_id),$url_da_allegare)
     ));
 }
 else{

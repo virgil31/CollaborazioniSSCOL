@@ -67,7 +67,7 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'curriculum',
-                                        fieldLabel: "<b>Curriculum Vitae</b> (<i>pdf</i> - Max <b>7MB</b>)",
+                                        fieldLabel: "<b>Curriculum Vitae</b> (<i>pdf</i> - Max <b>500KB</b>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -75,8 +75,8 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         listeners: {
                                             change: function(fld, value) {
                                                 var mega_bytes = fld.fileInputEl.dom.files[0].size/1024/1024;
-                                                if(mega_bytes>7){
-                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>7MB</b>");
+                                                if(mega_bytes>0.5){
+                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
                                                     this.fileInputEl.set({accept: '.pdf'});
                                                 }
@@ -103,7 +103,7 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'documento_identita',
-                                        fieldLabel: "<b>Documento d'Identità</b> (<i>pdf</i> - Max <b>7MB</b>)",
+                                        fieldLabel: "<b>Documento d'Identità</b> (<i>pdf</i> - Max <b>500KB</b>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -111,8 +111,8 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         listeners: {
                                             change: function(fld, value) {
                                                 var mega_bytes = fld.fileInputEl.dom.files[0].size/1024/1024;
-                                                if(mega_bytes>7){
-                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>7MB</b>");
+                                                if(mega_bytes>0.5){
+                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
                                                     this.fileInputEl.set({accept: '.pdf'});
                                                 }
@@ -139,7 +139,7 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'referenze_professionali',
-                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls</i> - Max <b>7MB</b>)",
+                                        fieldLabel: "<b>Scheda Referenze Professionali</b> (<i>xls</i> - Max <b>500KB</b>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -147,8 +147,8 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         listeners: {
                                             change: function(fld, value) {
                                                 var mega_bytes = fld.fileInputEl.dom.files[0].size/1024/1024;
-                                                if(mega_bytes>7){
-                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>7MB</b>");
+                                                if(mega_bytes>0.5){
+                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
                                                     this.fileInputEl.set({accept: '.xls'});
                                                 }
@@ -176,7 +176,7 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'dichiarazione_sostitutiva',
-                                        fieldLabel: "<b>Dichiarazione Sostitutiva</b> (<i>pdf</i> - Max <b>7MB</b>)",
+                                        fieldLabel: "<b>Dichiarazione Sostitutiva</b> (<i>pdf</i> - Max <b>500KB</b>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -184,8 +184,8 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                         listeners: {
                                             change: function(fld, value) {
                                                 var mega_bytes = fld.fileInputEl.dom.files[0].size/1024/1024;
-                                                if(mega_bytes>7){
-                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>7MB</b>");
+                                                if(mega_bytes>0.5){
+                                                    Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
                                                     this.fileInputEl.set({accept: '.pdf'});
                                                 }

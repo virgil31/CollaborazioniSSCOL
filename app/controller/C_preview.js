@@ -46,13 +46,15 @@ Ext.define('CL.controller.C_preview', {
                     border: false,
                     autoEl: {
                         tag: "iframe",
-                        src: 'data/preview/textual.php?file_id='+file_id
+                        src: 'data/preview/textual.php?file_url='+file_url
                     }
                 };
                 break;
 
             // DOCX -> http://stackoverflow.com/questions/4587216/how-can-i-convert-a-docx-document-to-html-using-php
             // ZIP - RAR
+            case "xls":
+            case "xlsx":
             case "doc":
             case "docx":
                 main_panel =  {
@@ -63,7 +65,7 @@ Ext.define('CL.controller.C_preview', {
                     border: false,
                     autoEl: {
                         tag: "iframe",
-                        src: 'data/preview/office_iframe.php?file_id='+file_id
+                        src: 'data/preview/office_iframe.php?file_url='+file_url
                     }
                 };
                 break;

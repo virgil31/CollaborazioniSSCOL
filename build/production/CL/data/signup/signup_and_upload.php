@@ -131,6 +131,85 @@ else{
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//da sistema la query e la table html
+function getRiepilogo($registrazione_id){
+	$ini_array = parse_ini_file("../config.ini");
+	$pdo=new PDO("pgsql:host=".$ini_array['pdo_host'].";port=".$ini_array['pdo_port']."; dbname=".$ini_array['pdo_db'].";",$ini_array['pdo_user'],$ini_array['pdo_psw']);
+
+	$servizi =  getServiziById($registrazione_id);
+	$servizi_txt = "";
+
+	foreach ($servizi as $servizio) {
+		$servizi_txt .= $servizio->nome." (".$servizio->anni_esperienza." anni), ";
+	}
+
+	$to_return = "";
+
+	$statement = $pdo->prepare("
+		SELECT CONCAT(A.id,'D') as id,A.nome_ditta,data_registrazione,
+			url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
+
+			nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
+			email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed
+
+		FROM registrazione_individuale A
+		WHERE A.id = $registrazione_id
+
+	");
+
+	$statement->execute();
+	$result = $statement->fetchAll(PDO::FETCH_OBJ);
+	return '<b>Riepilogo Informazioni Della Registrazione</b><br><br>
+			<table border="1">
+				<tr style="background: greenyellow;"><th>Codice ID</th><b>'.$result[0]->id.'</b></tr>
+				<br>
+				<br>
+				<tr><th>Nome (Rappresentante)</th>'.$result[0]->nome." ".$result[0]->cognome.'</tr>
+				<tr><th>Email (Rappresentante)</th>'.$result[0]->email.'</tr>
+				<tr><th>Codice Fiscale (Rappresentante)</th>'.$result[0]->codice_fiscale.'</tr>
+				<br>
+				<br>
+				<tr><th>Nome Associazione</th>'.$result[0]->nome_ditta.'</tr>
+				<tr><th>Indirizzo</th>'.$result[0]->indirizzo." ".$result[0]->cap.'</tr>
+				<tr><th>Stato</th>'.$result[0]->stato_sede_legale.'</tr>
+				<tr><th>Citta\'</th>'.$result[0]->citta_sede_legale.'</tr>
+				<br>
+				<br>
+				<tr><th>Email (Associazione)</th>'.$result[0]->email_ditta.'</tr>
+				<tr><th>PEC (Associazione)</th>'.$result[0]->pec.'</tr>
+				<tr><th>Telefono</th>'.$result[0]->telefono.'</tr>
+				<tr><th>Partita IVA</th>'.$result[0]->partita_iva.'</tr>
+				<tr><th>Codice Fiscale (Associazione)</th>'.$result[0]->codice_fiscale_ditta.'</tr>
+				<br>
+				<br>
+				<tr><th>Servizi</th>'.$servizi_txt.'</tr>
+			</table>';
+}
+
+
+function getServiziById($id){
+	$ini_array = parse_ini_file("../config.ini");
+	$pdo=new PDO("pgsql:host=".$ini_array['pdo_host'].";port=".$ini_array['pdo_port']."; dbname=".$ini_array['pdo_db'].";",$ini_array['pdo_user'],$ini_array['pdo_psw']);
+
+	$statement = $pdo->prepare("
+		SELECT C.id, C.nome, B.anni_esperienza
+		FROM registrazione_individuale A
+			LEFT JOIN registrazione_individuale_servizio B ON B.registrazione_individuale_id = A.id
+			LEFT JOIN servizio C ON C.id = B.servizio_id
+		WHERE A.id = :registrazione_id
+	");
+
+	$params = array(
+		'registrazione_id' => $id
+	);
+
+	$statement->execute($params);
+	$result = $statement->fetchAll(PDO::FETCH_OBJ);
+
+	return $result;
+}
+
+
 /*
 I file verranno uppati in sottocartelle da massimo 1000 files. Il conteggio lo faccio in base a l'id
 dell'iscrizione

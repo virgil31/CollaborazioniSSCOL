@@ -216,11 +216,11 @@ Ext.define('CL.controller.C_registrazione', {
                         },
                         {
                             xtype: 'button',
-                            disabled: true,
+                            //disabled: true,
                             iconCls: 'x-fa fa-search',
                             tooltip: 'Anteprima',
-                            margin: '0 20 0 0'//,
-                            //handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,rec.get("url_referenze_professionali"));}
+                            margin: '0 20 0 0',
+                            handler: function(){CL.app.getController("C_preview").showWindowPreview(this.el,record_registrazione.get("url_referenze_professionali"));}
                         },
                         {
                             xtype: 'button',
