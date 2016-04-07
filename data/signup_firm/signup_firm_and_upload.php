@@ -129,11 +129,11 @@ function getRiepilogo($registrazione_ditta_id){
 	$to_return = "";
 
 	$statement = $pdo->prepare("
-		SELECT CONCAT(A.id,'D') as id,A.nome_ditta,data_registrazione,
+		SELECT CONCAT(A.id,'D') as id,A.nome_ditta,
 			url_curriculum, url_documento_identita, url_referenze_professionali, url_dichiarazione_sostitutiva,
 
 			nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
-			email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed
+			email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta
 
 		FROM registrazione_ditta A
 		WHERE A.id = $registrazione_ditta_id

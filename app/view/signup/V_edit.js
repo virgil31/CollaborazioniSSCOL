@@ -12,7 +12,7 @@ Ext.define('CL.view.signup.V_edit', {
 
     title: 'Scheda Registrazione',
 
-    height: 620,
+    height: 640,
     width: 820,
 
     layout: 'fit',
@@ -80,6 +80,11 @@ Ext.define('CL.view.signup.V_edit', {
                                         xtype: 'textfield',
                                         name: 'stato_nascita',
                                         fieldLabel: 'Stato di Nascita'
+                                    },
+                                    {
+                                        xtype: 'textfield',
+                                        name: 'citta_nascita',
+                                        fieldLabel: 'Città di Nascita'
                                     }
                                 ]
                             },

@@ -55,7 +55,7 @@ else{
 						nome, cognome, email, codice_fiscale, '' as nome_ditta, indirizzo, cap, '' as stato_sede_legale, '' as citta_sede_legale,
 						'' as email_ditta, pec, telefono, partita_iva, '' as codice_fiscale_ditta, unique_seed,
 
-						cittadinanza, data_nascita, stato_nascita, stato_residenza, citta_residenza,
+						cittadinanza, data_nascita, stato_nascita,citta_nascita, stato_residenza, citta_residenza,
 						CONCAT(tipo_laurea,' - ',nome_laurea) as laurea, CONCAT(tipo_specializzazione,' - ',nome_specializzazione) as specializzazione,
 						albo, numero_albo, data_albo
 
@@ -80,7 +80,7 @@ else{
 						nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
 						email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed,
 
-						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as stato_residenza, '' as citta_residenza,
+						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita,'' as citta_nascita, '' as stato_residenza, '' as citta_residenza,
 						'' as laurea,'' as specializzazione,
 						'' as albo, '' as numero_albo, 'now()' as data_albo
 
@@ -117,7 +117,7 @@ else{
 						nome, cognome, email, codice_fiscale, '' as nome_ditta, indirizzo, cap, '' as stato_sede_legale, '' as citta_sede_legale,
 						'' as email_ditta, pec, telefono, partita_iva, '' as codice_fiscale_ditta, unique_seed,
 
-						cittadinanza, data_nascita, stato_nascita, stato_residenza, citta_residenza,
+						cittadinanza, data_nascita, stato_nascita,citta_nascita, stato_residenza, citta_residenza,
 						CONCAT(tipo_laurea,' - ',nome_laurea) as laurea, CONCAT(tipo_specializzazione,' - ',nome_specializzazione) as specializzazione,
 						albo, numero_albo, data_albo
 
@@ -132,7 +132,7 @@ else{
 						nome, cognome, email, codice_fiscale, nome_ditta, indirizzo, cap, stato_sede_legale, citta_sede_legale,
 						email_ditta, pec, telefono, partita_iva, codice_fiscale_ditta, unique_seed,
 
-						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as stato_residenza, '' as citta_residenza,
+						'' as cittadinanza, 'now()' as data_nascita, '' as stato_nascita, '' as citta_nascita,'' as stato_residenza, '' as citta_residenza,
 						'' as laurea,'' as specializzazione,
 						'' as albo, '' as numero_albo, 'now()' as data_albo
 

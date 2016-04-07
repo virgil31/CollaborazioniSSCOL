@@ -122,31 +122,15 @@ $codice.=$mesi[$mese];
 // Giorno di nascita. Per le femmine 40 giorni in più.
 if($sesso=="m"){
         $codice.=$giorno;
-}else if($sesso=="f"){
+}else{
         $codice.=$giorno+40;
 }
 
-//CRNLCU 92E12H501G
+//CRNLCU92E12H501G
 
 // Codice del comune di nascita
 $codice.=$codcomune;
 
-
-/*
-// Codice di controllo. Per i pari $pari e per i dispari $dispari
-for($i=0;$i<strlen($codice);$i++){
- if($i%2==1){
-         $pre.=$dispari[strtolower($codice[$i])];
- }else{
-         $pre.=$pari[strtolower($codice[$i])];
- }
-}
-
-// Somma i valori del codice di controllo
-for($i=0;$i<strlen($pre);$i++){
-  $pre2+=$pre[$i];
-}
-*/
 $pre2 = 0;
 for($i=0;$i<strlen($codice);$i++){
     if($i%2==1)
@@ -161,7 +145,5 @@ $codice.=$lettere[($pre2%26)];
 
 // Ritorno il codice fiscale
 echo json_encode(array(
-    "codice_fiscale" => strtoupper($codice),
-    "mese" => $mese,
-    "giorno" => $giorno
+    "codice_fiscale" => strtoupper($codice)
 ));
