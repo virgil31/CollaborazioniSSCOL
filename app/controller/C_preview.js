@@ -51,8 +51,6 @@ Ext.define('CL.controller.C_preview', {
                 };
                 break;
 
-            // DOCX -> http://stackoverflow.com/questions/4587216/how-can-i-convert-a-docx-document-to-html-using-php
-            // ZIP - RAR
             case "xls":
             case "xlsx":
             case "doc":
