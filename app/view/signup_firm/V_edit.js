@@ -32,7 +32,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
                 items: [
 
                     {
-                        title: 'Profilo',
+                        title: '<b>Profilo</b>',
                         layout: 'vbox',
                         defaults:{
                             labelWidth: 200,
@@ -167,7 +167,7 @@ Ext.define('CL.view.signup_firm.V_edit', {
                     },
 
                     {
-                        title: 'Servizi',
+                        title: '<b>Servizi</b>',
                         layout: 'fit',
                         items: [
                             {
