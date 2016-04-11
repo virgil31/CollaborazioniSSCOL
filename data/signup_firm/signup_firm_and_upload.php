@@ -268,7 +268,7 @@ function inviaMail($from, $to, $oggetto, $testo, $allegati = null){
 		$mail->addAttachment($allegati[0], "CV.pdf");
 		$mail->addAttachment($allegati[1], "Documento Identita.pdf");
 		$mail->addAttachment($allegati[2], "Referenze Professionali.xls");
-		$mail->addAttachment($allegati[3], "Dichiarazione Sostitutiva.pdf");
+		$mail->addAttachment($allegati[3], "Dichiarazione Sostitutiva.doc");
 	}
 
 	$mail->Subject = $oggetto;

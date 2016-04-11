@@ -187,19 +187,19 @@ Ext.define('CL.view.signup_firm.V_form_files', {
                                                 if(mega_bytes>0.5){
                                                     Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
-                                                    this.fileInputEl.set({accept: '.pdf'});
+                                                    this.fileInputEl.set({accept: '.doc'});
                                                 }
                                                 else{
                                                     if(value != ""){
                                                         var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                         fld.setRawValue(newValue);
 
-                                                        this.fileInputEl.set({accept: '.pdf'});
+                                                        this.fileInputEl.set({accept: '.doc'});
 
                                                         var extension = newValue.split('.').pop();
-                                                        if(extension != "pdf"){
+                                                        if(extension != "doc"){
                                                             this.reset();
-                                                            this.fileInputEl.set({accept: '.pdf'});
+                                                            this.fileInputEl.set({accept: '.doc'});
                                                         }
                                                     }
                                                 }

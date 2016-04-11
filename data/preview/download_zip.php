@@ -33,7 +33,7 @@ $zip->open("temp/".$zip_name, ZipArchive::CREATE);
 $zip->addFromString("CV.pdf",file_get_contents($ini_array["path_upload"].$result[0]->url_curriculum));
 $zip->addFromString("Documento_Identita.pdf",file_get_contents($ini_array["path_upload"].$result[0]->url_documento_identita));
 $zip->addFromString("Referenze_Professionali.xls",file_get_contents($ini_array["path_upload"].$result[0]->url_referenze_professionali));
-$zip->addFromString("Dichiarazione_Sostitutiva.pdf",file_get_contents($ini_array["path_upload"].$result[0]->url_dichiarazione_sostitutiva));
+$zip->addFromString("Dichiarazione_Sostitutiva.doc",file_get_contents($ini_array["path_upload"].$result[0]->url_dichiarazione_sostitutiva));
 
 $zip->close();
 

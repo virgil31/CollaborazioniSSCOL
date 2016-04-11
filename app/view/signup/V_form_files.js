@@ -176,7 +176,7 @@ Ext.define('CL.view.signup.V_form_files', {
                                     {
                                         xtype: 'filefield',
                                         name: 'dichiarazione_sostitutiva',
-                                        fieldLabel: "<b>Dichiarazione Sostitutiva</b> (<i>pdf</i> - Max <b>500KB</b>)",
+                                        fieldLabel: "<b>Dichiarazione Sostitutiva</b> (<i>doc</i> - Max <b>500KB</b>)",
                                         labelAlign: 'top',
                                         allowBlank: false,
                                         buttonText: 'Seleziona file...',
@@ -187,25 +187,25 @@ Ext.define('CL.view.signup.V_form_files', {
                                                 if(mega_bytes>0.5){
                                                     Ext.Msg.alert("Attenzione","Massima dimensione allegato consentita: <b>500KB</b>");
                                                     fld.reset();
-                                                    this.fileInputEl.set({accept: '.pdf'});
+                                                    this.fileInputEl.set({accept: '.doc'});
                                                 }
                                                 else{
                                                     if(value != ""){
                                                         var newValue = value.replace(/C:\\fakepath\\/g, '');
                                                         fld.setRawValue(newValue);
 
-                                                        this.fileInputEl.set({accept: '.pdf'});
+                                                        this.fileInputEl.set({accept: '.doc'});
 
                                                         var extension = newValue.split('.').pop();
-                                                        if(extension != "pdf"){
+                                                        if(extension != "doc"){
                                                             this.reset();
-                                                            this.fileInputEl.set({accept: '.pdf'});
+                                                            this.fileInputEl.set({accept: '.doc'});
                                                         }
                                                     }
-                                                }                                                
+                                                }
                                             },
                                             afterrender: function(){
-                                                this.fileInputEl.set({accept: '.pdf'});
+                                                this.fileInputEl.set({accept: '.doc'});
                                             }
                                         }
                                     }
