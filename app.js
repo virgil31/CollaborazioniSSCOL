@@ -89,7 +89,7 @@ Ext.application({
                 {
                     xtype: 'panel',
                     scrollable: true,
-                    bodyStyle: "background: url('resources/images/background.jpg');background-repeat: no-repeat;background-position: 0 0;background-size: cover;",
+                    bodyStyle: "background: url('http://www.worldfortravel.com/wp-content/uploads/2013/03/Amazing-Castel-Sant-Angelo.jpg');background-repeat: no-repeat;background-position: 0 0;background-size: cover;",
                     tbar: Ext.widget('tbar'),
                     layout: {
                         type: 'hbox',

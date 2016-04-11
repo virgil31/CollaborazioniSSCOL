@@ -16,7 +16,7 @@ if($type == "u"){
     $s = $pdo->prepare("
     	UPDATE registrazione_individuale
         SET confermata = :confermata
-        WHERE unique_seed = :unique_seed
+        WHERE unique_seed like :unique_seed
     ");
 }
 //attivazione registrazione ditta
@@ -24,7 +24,7 @@ else{
     $s = $pdo->prepare("
     	UPDATE registrazione_ditta
         SET confermata = :confermata
-        WHERE unique_seed = :unique_seed
+        WHERE unique_seed like :unique_seed
     ");
 }
 
@@ -38,7 +38,7 @@ $success = $s->execute($params);
 $eventual_error = $pdo->errorInfo();
 
 
-if($success){
+if($s->rowCount() == 1){
     echo json_encode(array(
         'success' => true
     ));

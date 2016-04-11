@@ -113,7 +113,7 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                             },
                                             {
                                                 xtype: 'textfield',
-                                                name: 'codice_fiscale_ditta',
+                                                name: 'codice_fiscale',
                                                 fieldLabel: 'Codice Fiscale *',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',
@@ -298,11 +298,11 @@ Ext.define('CL.view.signup_firm.V_form_profilo', {
                                                     });
 
                                                     return to_return;
-                                            	}                                                
+                                            	}
                                             },
                                             {
                                                 xtype: 'textfield',
-                                                name: 'codice_fiscale',
+                                                name: 'codice_fiscale_ditta',
                                                 fieldLabel: 'Codice Fiscale',
                                                 labelSeparator : '',
                                                 labelAlign: 'top',

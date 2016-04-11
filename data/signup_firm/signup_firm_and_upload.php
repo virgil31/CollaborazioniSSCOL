@@ -123,7 +123,7 @@ function getRiepilogo($registrazione_ditta_id){
 	$servizi_txt = "";
 
 	foreach ($servizi as $servizio) {
-		$servizi_txt .= $servizio->nome." (".$servizio->anni_esperienza." anni), ";
+		$servizi_txt .= "-".$servizio->nome." (".$servizio->anni_esperienza." anni)<br>";
 	}
 
 	$to_return = "";
