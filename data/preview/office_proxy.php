@@ -16,6 +16,19 @@ else if(strtolower($pathinfo["extension"]) == 'doc'){
     header('Content-Disposition: attachment; filename=collaborazione.doc');
 }
 
+/*
+// da testare
+else if(strtolower($pathinfo["extension"]) == 'xlsx'){
+   header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+   header('Content-Disposition: attachment; filename=collaborazione.doc');
+}
+
+// da testare
+else if(strtolower($pathinfo["extension"]) == 'docx'){
+   header('Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+   header('Content-Disposition: attachment; filename=collaborazione.doc');
+}
+*/
 
 readfile($path_upload.$file_url);
 

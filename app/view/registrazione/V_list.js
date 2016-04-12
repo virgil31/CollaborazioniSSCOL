@@ -102,7 +102,7 @@ Ext.define('CL.view.registrazione.V_list', {
                     },
                     {
                         xtype:'actioncolumn',
-                        width:100,
+                        width:120,
                         items: [
                             {
                                 iconCls: 'x-fa fa-search',
